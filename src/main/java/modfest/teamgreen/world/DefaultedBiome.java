@@ -12,11 +12,11 @@ public class DefaultedBiome extends Biome {
 		super(defaults.apply(properties));
 	}
 
-	public static class Properties extends SettingBehaviour {
+	public static class Properties extends SettingBehaviour<Properties> {
 		// Indicates that the SettingBehaviour is not a SettingDefaults. For Convenience.
 	}
 
-	public static class SettingDefaults extends SettingBehaviour implements Function<Properties, Settings> {
+	public static class SettingDefaults extends SettingBehaviour<SettingDefaults> implements Function<Properties, Settings> {
 		public SettingDefaults() {
 			this.depth = 0.0f;
 			this.scale = 0.1f;
@@ -30,6 +30,7 @@ public class DefaultedBiome extends Biome {
 		public Settings apply(Properties properties) {
 			Settings result = new Biome.Settings().parent(null);
 
+			result.surfaceBuilder(properties.surfaceBuilder == null ? this.surfaceBuilder : properties.surfaceBuilder);
 			result.category(properties.category == null ? this.category : properties.category);
 			result.precipitation(properties.precipitation == null ? this.precipitation : properties.precipitation);
 			result.depth(properties.depth == null ? this.depth : properties.depth);
@@ -43,7 +44,8 @@ public class DefaultedBiome extends Biome {
 		}
 	}
 
-	private static class SettingBehaviour {
+	@SuppressWarnings("unchecked")
+	private static class SettingBehaviour<T extends SettingBehaviour<T>> {
 		ConfiguredSurfaceBuilder<?> surfaceBuilder;
 		Biome.Precipitation precipitation;
 		Biome.Category category;
@@ -54,49 +56,49 @@ public class DefaultedBiome extends Biome {
 		Integer waterColor;
 		Integer waterFogColor;
 
-		public SettingBehaviour category(Category category) {
+		public T category(Category category) {
 			this.category = category;
-			return this;
+			return (T) this;
 		}
 
-		public SettingBehaviour precipitation(Precipitation precipitation) {
+		public T precipitation(Precipitation precipitation) {
 			this.precipitation = precipitation;
-			return this;
+			return (T) this;
 		}
 
-		public <SC extends SurfaceConfig> SettingBehaviour configureSurfaceBuilder(SurfaceBuilder<SC> surfaceBuilder, SC surfaceConfig) {
+		public <SC extends SurfaceConfig> T configureSurfaceBuilder(SurfaceBuilder<SC> surfaceBuilder, SC surfaceConfig) {
 			this.surfaceBuilder = new ConfiguredSurfaceBuilder<>(surfaceBuilder, surfaceConfig);
-			return this;
+			return (T) this;
 		}
 
-		public SettingBehaviour depth(float depth) {
+		public T depth(float depth) {
 			this.depth = depth;
-			return this;
+			return (T) this;
 		}
 
-		public SettingBehaviour scale(float scale) {
+		public T scale(float scale) {
 			this.scale = scale;
-			return this;
+			return (T) this;
 		}
 
-		public SettingBehaviour temperature(float temperature) {
+		public T temperature(float temperature) {
 			this.temperature = temperature;
-			return this;
+			return (T) this;
 		}
 
-		public SettingBehaviour downfall(float downfall) {
+		public T downfall(float downfall) {
 			this.downfall = downfall;
-			return this;
+			return (T) this;
 		}
 
-		public SettingBehaviour waterColor(int waterColor) {
+		public T waterColor(int waterColor) {
 			this.waterColor = waterColor;
-			return this;
+			return (T) this;
 		}
 
-		public SettingBehaviour waterFogColor(int waterFogColor) {
+		public T waterFogColor(int waterFogColor) {
 			this.waterFogColor = waterFogColor;
-			return this;
+			return (T) this;
 		}
 	}
 }
