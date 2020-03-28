@@ -10,5 +10,4 @@ public class CrimsonBaseBiome extends DefaultedBiome {
 				.temperature(0.8f)
 				.downfall(0.1f));
 	}
-
 }
