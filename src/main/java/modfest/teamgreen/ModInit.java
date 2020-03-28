@@ -26,7 +26,7 @@ public class ModInit implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// access CONFIG.exampleField
+		// access CONFIG.exampleField etc
 		registerAll();
 		addGeneration();
 	}
