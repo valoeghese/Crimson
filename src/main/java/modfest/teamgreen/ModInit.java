@@ -2,12 +2,15 @@ package modfest.teamgreen;
 
 import java.util.function.Predicate;
 
+import modfest.teamgreen.item.ModItems;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
@@ -19,6 +22,7 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 public class ModInit implements ModInitializer {
 	public static final ModConfig CONFIG = ModConfig.load();
 	public static final String MOD_ID = "placeholder";
+	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "group"), () -> new ItemStack(ModItems.MAGIC_DEVICE.get()));
 
 	@Override
 	public void onInitialize() {
@@ -28,7 +32,7 @@ public class ModInit implements ModInitializer {
 	}
 
 	private void registerAll() {
-		// registerItem( ... )
+		ModItems.ensureInit();
 		// registerBlock( ... )
 		// registerFeature( ... )
 	}
@@ -48,15 +52,6 @@ public class ModInit implements ModInitializer {
 				biome.addFeature(step, feature);
 			}
 		});
-	}
-
-	public static void registerItem(String id, Item item) {
-		Registry.register(Registry.ITEM, from(id), item);
-	}
-
-	public static void registerBlock(String id, Block block, ItemGroup group) {
-		Registry.register(Registry.BLOCK, from(id), block);
-		Registry.register(Registry.ITEM, from(id), new BlockItem(block, new Item.Settings().group(group)));
 	}
 
 	public static void registerFeature(String id, Feature<?> feature) {
