@@ -61,5 +61,5 @@ public abstract class MixinGameRenderer {
 		}
 	}
 
-	static final int crimson_blendRadius = 6;
+	private static final int crimson_blendRadius = 6;
 }
