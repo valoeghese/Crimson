@@ -3,6 +3,7 @@ package modfest.teamgreen.world.crimson;
 import modfest.teamgreen.world.BiomeFog;
 import modfest.teamgreen.world.DefaultedBiome;
 import modfest.teamgreen.world.ModWorld;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
@@ -34,4 +35,11 @@ public abstract class CrimsonBaseBiome extends DefaultedBiome implements BiomeFo
 	public float modifyFogDistanceChunks(float originalDistanceChunks) {
 		return 4.5f;
 	}
+
+	@Override
+	public Vec3d getFogColour(int x, int z) {
+		return CRIMSON_FOG_COLOUR;
+	}
+
+	private static final Vec3d CRIMSON_FOG_COLOUR = new Vec3d(0.85, 0.2, 0.2);
 }
