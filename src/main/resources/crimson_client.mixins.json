@@ -3,7 +3,8 @@
   "package": "modfest.teamgreen.mixin.client",
   "compatibilityLevel": "JAVA_8",
   "client": [
-    "MixinGameRenderer"
+    "MixinGameRenderer",
+    "MixinOverworldDimension"
   ],
   "injectors": {
     "defaultRequire": 1

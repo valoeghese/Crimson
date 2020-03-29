@@ -10,6 +10,14 @@ public class ModWorld {
 			Blocks.GRAVEL.getDefaultState());
 
 	public static void registerAll() {
-		
+
+	}
+
+	public static final int FOG_BLEND_RADIUS = 6;
+	public static final float FOG_BLEND_DIVISOR;
+
+	static {
+		final float sqrtDivisor = (FOG_BLEND_RADIUS * 2) + 1;
+		FOG_BLEND_DIVISOR = sqrtDivisor * sqrtDivisor;
 	}
 }
