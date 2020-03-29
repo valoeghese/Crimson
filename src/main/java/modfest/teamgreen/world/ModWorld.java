@@ -30,7 +30,7 @@ public class ModWorld {
 		ReflectionHacks.injectOverworldBiome(biome);
 	}
 
-	public static final int FOG_BLEND_RADIUS = 6;
+	public static final int FOG_BLEND_RADIUS = 8;
 	public static final float FOG_BLEND_DIVISOR;
 
 	static {

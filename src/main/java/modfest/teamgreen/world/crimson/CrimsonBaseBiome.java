@@ -13,7 +13,9 @@ public abstract class CrimsonBaseBiome extends DefaultedBiome implements BiomeFo
 				.precipitation(Biome.Precipitation.NONE)
 				.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, ModWorld.CRIMSON_SURFACE_CONFIG)
 				.temperature(0.8f)
-				.downfall(0.1f));
+				.downfall(0.1f)
+				.waterColor(0xd81406)
+				.waterFogColor(0xf42264));
 	}
 
 	@Override

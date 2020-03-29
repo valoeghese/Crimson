@@ -31,9 +31,9 @@ public class MixinOverworldDimension {
 			boolean modified = false;
 
 			// use squares for colour blending because of how colour is perceived
-			float sqrR = 0.0f;
-			float sqrG = 0.0f;
-			float sqrB = 0.0f;
+			float accumulatedR = 0.0f;
+			float accumulatedG = 0.0f;
+			float accumulatedB = 0.0f;
 
 			BlockPos.Mutable pos = new BlockPos.Mutable();
 
@@ -56,19 +56,20 @@ public class MixinOverworldDimension {
 						g = biomeFogColour.getY(),
 						b = biomeFogColour.getZ();
 
-						sqrR += r * r;
-						sqrG += g * g;
-						sqrB += b * b;
+						accumulatedR += r * r;
+						accumulatedG += g * g;
+						accumulatedB += b * b;
 					} else {
-						sqrR += 0.25f; // 0.5 * 0.5
-						sqrG += 0.25f; // 0.5 * 0.5
-						sqrB += 0.25f; // 0.5 * 0.5
+						accumulatedR += 0.25f; // 0.5 * 0.5
+						accumulatedG += 0.25f; // 0.5 * 0.5
+						accumulatedB += 0.25f; // 0.5 * 0.5
 					}
 				}
 			}
 
 			if (modified) { // set return value if modified
-				cir.setReturnValue(new Vec3d(Math.sqrt(sqrR), Math.sqrt(sqrG), Math.sqrt(sqrB)));
+				final double divisor = ModWorld.FOG_BLEND_DIVISOR;
+				cir.setReturnValue(new Vec3d(Math.sqrt(accumulatedR / divisor), Math.sqrt(accumulatedG / divisor), Math.sqrt(accumulatedB / divisor)));
 			}
 		}
 	}

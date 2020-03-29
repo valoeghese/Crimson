@@ -23,8 +23,8 @@ public abstract class MixinVanillaLayeredBiomeSource {
 
 	private CrimsonBiomeLogic crimsonBiomeLogic;
 
-	@Inject(at = @At("RETURN"), method = "getBiomeForNoiseGen", cancellable = true)
 	// genX / genZ to blockX / blockZ:  << 2
+	@Inject(at = @At("RETURN"), method = "getBiomeForNoiseGen", cancellable = true)
 	private void injectSpecialBiomes(int genX, int genY, int genZ, CallbackInfoReturnable<Biome> cir) {
 		Biome result = cir.getReturnValue();
 		this.crimsonBiomeLogic.apply(result, genX, genZ, cir::setReturnValue);
