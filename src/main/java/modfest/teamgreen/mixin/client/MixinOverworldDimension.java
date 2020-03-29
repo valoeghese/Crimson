@@ -30,7 +30,7 @@ public class MixinOverworldDimension {
 
 			boolean modified = false;
 
-			// use squares for colour blending because of how colour is percieved
+			// use squares for colour blending because of how colour is perceived
 			float sqrR = 0.0f;
 			float sqrG = 0.0f;
 			float sqrB = 0.0f;
