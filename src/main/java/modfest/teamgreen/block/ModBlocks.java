@@ -1,5 +1,6 @@
 package modfest.teamgreen.block;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import modfest.teamgreen.ModInit;
@@ -13,13 +14,23 @@ import net.minecraft.util.registry.Registry;
 public enum ModBlocks {
 	;
 
-	private <T extends FabricBlockSettings> ModBlocks(String id, Function<T, Block> constructor, T settings) {
+	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings) {
 		this(id, constructor, settings, new Item.Settings().group(ModInit.GROUP));
 	}
 
-	private <T extends FabricBlockSettings> ModBlocks(String id, Function<T, Block> constructor, T settings, Item.Settings itemSettings) {
+	private <T extends Object> ModBlocks(String id, BiFunction<Block.Settings, T, Block> constructor, FabricBlockSettings settings, T moddedBlockProperties) {
+		this(id, constructor, settings, moddedBlockProperties, new Item.Settings().group(ModInit.GROUP));
+	}
+
+	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings, Item.Settings itemSettings) {
 		Identifier identifier = ModInit.from(id);
-		this.block = Registry.register(Registry.BLOCK, identifier, constructor.apply(settings));
+		this.block = Registry.register(Registry.BLOCK, identifier, constructor.apply(settings.build()));
+		this.item = Registry.register(Registry.ITEM, identifier, new BlockItem(this.block, itemSettings));
+	}
+
+	private <T extends Object> ModBlocks(String id, BiFunction<Block.Settings, T, Block> constructor, FabricBlockSettings settings, T moddedBlockProperties, Item.Settings itemSettings) {
+		Identifier identifier = ModInit.from(id);
+		this.block = Registry.register(Registry.BLOCK, identifier, constructor.apply(settings.build(), moddedBlockProperties));
 		this.item = Registry.register(Registry.ITEM, identifier, new BlockItem(this.block, itemSettings));
 	}
 

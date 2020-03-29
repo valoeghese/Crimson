@@ -2,13 +2,12 @@ package modfest.teamgreen;
 
 import java.util.function.Predicate;
 
+import modfest.teamgreen.block.ModBlocks;
 import modfest.teamgreen.item.ModItems;
+import modfest.teamgreen.world.ModWorld;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -21,7 +20,7 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 
 public class ModInit implements ModInitializer {
 	public static final ModConfig CONFIG = ModConfig.load();
-	public static final String MOD_ID = "placeholder";
+	public static final String MOD_ID = "crimson"; // until we come up with a better name
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "group"), () -> new ItemStack(ModItems.MAGIC_DEVICE.get()));
 
 	@Override
@@ -33,6 +32,8 @@ public class ModInit implements ModInitializer {
 
 	private void registerAll() {
 		ModItems.ensureInit();
+		ModBlocks.ensureInit();
+		ModWorld.registerAll();
 		// registerBlock( ... )
 		// registerFeature( ... )
 	}

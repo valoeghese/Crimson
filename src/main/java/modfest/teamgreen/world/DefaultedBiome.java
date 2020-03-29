@@ -3,13 +3,25 @@ package modfest.teamgreen.world;
 import java.util.function.Function;
 
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceConfig;
 
-public class DefaultedBiome extends Biome {
+// Overworld [style] Biome, in particular
+// If adding biomes to other vanilla dimensions, separate the overworld specific stuff from here
+public abstract class DefaultedBiome extends Biome {
 	protected DefaultedBiome(Properties properties, SettingDefaults defaults) {
 		super(defaults.apply(properties));
+
+		// Strongholds can generate in every overworld biome
+		this.addStructureFeature(Feature.STRONGHOLD.configure(FeatureConfig.DEFAULT));
+		// Vanilla Structure Stuff
+		DefaultBiomeFeatures.addDefaultStructures(this);
+		// if this generation stage feature isn't added, stuff looks bad across biome borders in snowy areas
+		DefaultBiomeFeatures.addFrozenTopLayer(this);
 	}
 
 	public static class Properties extends SettingBehaviour<Properties> {

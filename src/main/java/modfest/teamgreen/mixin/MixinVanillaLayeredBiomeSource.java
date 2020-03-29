@@ -15,7 +15,7 @@ import net.minecraft.world.biome.source.VanillaLayeredBiomeSource;
 import net.minecraft.world.biome.source.VanillaLayeredBiomeSourceConfig;
 
 @Mixin(VanillaLayeredBiomeSource.class)
-public class MixinVanillaLayeredBiomeSource {
+public abstract class MixinVanillaLayeredBiomeSource {
 	@Inject(at = @At("RETURN"), method = "<init>")
 	private void injectInit(VanillaLayeredBiomeSourceConfig config, CallbackInfo info) {
 		Random rand = new Random(config.getSeed() + 1);
@@ -46,5 +46,23 @@ public class MixinVanillaLayeredBiomeSource {
 	private void injectSpecialBiomes(int genX, int genY, int genZ, CallbackInfoReturnable<Biome> cir) {
 		Biome result = cir.getReturnValue();
 		double threshold = this.crimson_thresholdCache.apply(genX, genZ);
+		
+		if (threshold > 0.33f) {
+			switch (result.getCategory()) {
+			case MUSHROOM:
+			case OCEAN:
+			case RIVER:
+				break;
+			case TAIGA:
+			case JUNGLE:
+			case FOREST:
+				break;
+			case EXTREME_HILLS:
+			case SWAMP:
+				break;
+			default:
+				break;
+			}
+		}
 	}
 }

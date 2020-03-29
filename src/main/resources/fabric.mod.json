@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "placeholder",
+  "id": "crimson",
   "version": "1.0.0",
   
   "name": "Placeholder",
@@ -25,6 +25,7 @@
   },
   
   "mixins": [
-    "placeholder.mixins.json"
+    "crimson.mixins.json",
+    "crimson_client.mixins.json"
   ]
 }

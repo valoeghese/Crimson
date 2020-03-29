@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "modfest.teamgreen.mixin.client",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "MixinGameRenderer"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
