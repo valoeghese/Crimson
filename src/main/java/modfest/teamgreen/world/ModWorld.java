@@ -27,6 +27,7 @@ public class ModWorld {
 
 	private static final void registerBiome(Biome biome, String id) {
 		Registry.register(Registry.BIOME, ModInit.from(id), biome);
+		ReflectionHacks.injectOverworldBiome(biome);
 	}
 
 	public static final int FOG_BLEND_RADIUS = 6;
