@@ -8,7 +8,8 @@ import net.minecraft.util.registry.Registry;
 
 @SuppressWarnings("unchecked")
 public enum ModItems {
-	MAGIC_DEVICE("magic_device", Item::new, new Item.Settings());
+	MAGIC_DEVICE("magic_device", Item::new, new Item.Settings()),
+	LAZULITE("lazulite", Item::new, new Item.Settings());
 
 	private <T extends Item.Settings> ModItems(String id, Function<T, Item> constructor, T settings) {
 		this.item = Registry.register(Registry.ITEM, ModInit.from(id), constructor.apply((T) settings.group(ModInit.GROUP)));
