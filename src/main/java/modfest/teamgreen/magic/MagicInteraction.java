@@ -18,6 +18,8 @@ public class MagicInteraction {
 	//              ^              ^              ^
 	//           device[2]      device[5]      device[9]
 	public MagicInteraction(Attribute[] device) {
+		this.components = new ArrayList<>();
+
 		final int max = (device.length / 3);
 
 		for (int i = 0; i < max; ++i) {
@@ -29,8 +31,8 @@ public class MagicInteraction {
 				break;
 			}
 
-			ModifyingAttribute ma0 = device[offset];
-			ModifyingAttribute ma1 = device[offset + 2];
+			Attribute ma0 = device[offset];
+			Attribute ma1 = device[offset + 2];
 
 			if (ma0 == null) {
 				if (ma1 == null) {
@@ -50,6 +52,12 @@ public class MagicInteraction {
 		}
 	}
 
+	private MagicInteraction(List<ConfiguredAttribute> components) {
+		this.components = components;
+	}
+
+	private final List<ConfiguredAttribute> components;
+
 	public void apply(IWorld world, MagicUser user, @Nullable BlockPos pos) {
 		int currentValue = -1; // -1 represents not started
 
@@ -62,5 +70,29 @@ public class MagicInteraction {
 		}
 	}
 
-	private final List<ConfiguredAttribute> components = new ArrayList<>();
+	public int[] serialise() {
+		final int length = this.components.size();
+		int[] result = new int[length * 3];
+
+		for (int i = 0; i < length; ++i) {
+			int start = i * 3;
+			int[] serialisedConfiguredAttribute = this.components.get(i).serialise();
+			System.arraycopy(serialisedConfiguredAttribute, 0, result, start, 3);
+		}
+
+		return result;
+	}
+
+	public static MagicInteraction deserialise(int[] serialisedData) {
+		final int length = serialisedData.length;
+		final int caLength = length / 3;
+		List<ConfiguredAttribute> configuredAttributes = new ArrayList<>();
+
+		for (int i = 0; i < caLength; ++i) {
+			int start = i * 3;
+			configuredAttributes.add(ConfiguredAttribute.deserialise(serialisedData[start], serialisedData[start + 1], serialisedData[start + 2]));
+		}
+
+		return new MagicInteraction(configuredAttributes);
+	}
 }
