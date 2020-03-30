@@ -5,8 +5,12 @@ import java.util.List;
 
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ModifyingAttribute;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 
 public class MagicInteraction {
+
 	//           device[0]      device[3]      device[7]
 	//              v              v              v
 	// start ->  device[1] (->) device[4] (->) device[8] ... etc
@@ -42,6 +46,18 @@ public class MagicInteraction {
 
 		if (this.components.isEmpty()) {
 			throw new RuntimeException("Empty Magical Device created!");
+		}
+	}
+
+	public void apply(IWorld world, MagicUser user, BlockPos pos) {
+		int currentValue = -1; // -1 represents not started
+
+		for (ConfiguredAttribute attribute : this.components) {
+			if (currentValue == -1) {
+				currentValue = attribute.activate(world, user, pos);
+			} else {
+				currentValue = attribute.process(world, currentValue, user, pos);
+			}
 		}
 	}
 

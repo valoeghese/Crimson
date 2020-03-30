@@ -2,7 +2,7 @@ package modfest.teamgreen.magic;
 
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ModifyingAttribute;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
 public final class ConfiguredAttribute {
@@ -14,11 +14,11 @@ public final class ConfiguredAttribute {
 	private final ModifyingAttribute modifyingAttribute;
 	private final Attribute baseAttribute;
 
-	public int activate(IWorld world, PlayerEntity caster) {
-		return this.baseAttribute.activate(world, caster, this.modifyingAttribute);
+	public int activate(IWorld world, MagicUser user, BlockPos pos) {
+		return this.baseAttribute.activate(world, user, pos, this.modifyingAttribute);
 	}
 
-	public int process(IWorld world, int previous, PlayerEntity caster) {
-		return this.baseAttribute.process(world, previous, caster, this.modifyingAttribute);
+	public int process(IWorld world, int previous, MagicUser user, BlockPos pos) {
+		return this.baseAttribute.process(world, previous, user, pos, this.modifyingAttribute);
 	}
 }

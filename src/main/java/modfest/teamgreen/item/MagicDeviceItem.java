@@ -1,6 +1,7 @@
 package modfest.teamgreen.item;
 
 import modfest.teamgreen.logic.MagicDeviceItemstack;
+import modfest.teamgreen.magic.MagicInteraction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
@@ -18,6 +19,7 @@ public class MagicDeviceItem extends Item {
 
 		if (stack instanceof MagicDeviceItemstack) {
 			MagicDeviceData data = ((MagicDeviceItemstack) stack).getData();
+			MagicInteraction interaction = data.getInteraction();
 
 			if (data != null) {
 				// do stuff
@@ -33,8 +35,18 @@ public class MagicDeviceItem extends Item {
 	}
 
 	public static class MagicDeviceData {
-		public MagicDeviceData(CompoundTag itemTag) {
-			// TODO Auto-generated constructor stub
+		public void load(CompoundTag itemTag) {
+			// load data from tag if it exists
+		}
+
+		private MagicInteraction interaction;
+
+		public MagicInteraction getInteraction() {
+			return this.interaction;
+		}
+
+		public void setInteraction(MagicInteraction interaction) {
+			this.interaction = interaction;
 		}
 	}
 }

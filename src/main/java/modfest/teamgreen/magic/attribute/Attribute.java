@@ -3,10 +3,13 @@ package modfest.teamgreen.magic.attribute;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import net.minecraft.entity.player.PlayerEntity;
+import modfest.teamgreen.magic.MagicUser;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
 public abstract class Attribute implements ModifyingAttribute {
@@ -30,17 +33,19 @@ public abstract class Attribute implements ModifyingAttribute {
 
 	/**
 	 * @param world the world
-	 * @param caster the caster. Null if the caster is a block.
+	 * @param user the user of the magic. Can be a block or player.
+	 * @param pos If this was activated on something, represents the blockpos thereof. Otherwise null.
 	 * @return an int that can be passed on to following modifiers. Typically represents some kind of strength from 0-15.
 	 */
-	public abstract int activate(IWorld world, PlayerEntity caster, ModifyingAttribute modifier);
+	public abstract int activate(IWorld world, @Nullable MagicUser user, @Nullable BlockPos pos, ModifyingAttribute modifier);
 	/**
 	 * @param world the world
 	 * @param previous the int passed from the previous modifier
-	 * @param caster the caster. Null if the caster is a block.
+	 * @param the user of the magic. Can be a block or player.
+	 * @param pos If this was activated on something, represents the blockpos thereof. Otherwise null.
 	 * @return an int that can be passed on to following modifiers. Typically represents some kind of strength from 0-15.
 	 */
-	public abstract int process(IWorld world, int previous, PlayerEntity caster, ModifyingAttribute modifier);
+	public abstract int process(IWorld world, int previous, @Nullable MagicUser user, @Nullable BlockPos pos, ModifyingAttribute modifier);
 
 	public static Attribute getById(Identifier id) {
 		return ID_TO_ATTRIBUTE.get(id);

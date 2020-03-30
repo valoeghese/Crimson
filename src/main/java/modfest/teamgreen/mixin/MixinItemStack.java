@@ -21,7 +21,7 @@ public class MixinItemStack implements MagicDeviceItemstack {
 	@Final
 	private Item item;
 
-	private MagicDeviceData crimson_magicData;
+	private MagicDeviceData crimson_magicData = new MagicDeviceData();
 
 	@Shadow
 	private CompoundTag getOrCreateTag() {
@@ -38,7 +38,7 @@ public class MixinItemStack implements MagicDeviceItemstack {
 			if (item instanceof MagicDeviceItem) {
 				if (tag.contains("tag", 10)) {
 					CompoundTag itemTag = tag.getCompound("tag");
-					((MagicDeviceItemstack) item).setData(new MagicDeviceData(itemTag));
+					((MagicDeviceItemstack) item).getData().load(itemTag);
 				}
 			}
 		}
@@ -47,17 +47,12 @@ public class MixinItemStack implements MagicDeviceItemstack {
 	@Inject(method = "setTag", at = @At("RETURN"))
 	private void setTag(CompoundTag tag, CallbackInfo info) {
 		if (this.item instanceof MagicDeviceItem) {
-			this.setData(new MagicDeviceData(tag));
+			this.getData().load(tag);
 		}
 	}
 
 	@Override
 	public MagicDeviceData getData() {
 		return this.crimson_magicData;
-	}
-
-	@Override
-	public void setData(MagicDeviceData data) {
-		this.crimson_magicData = data;
 	}
 }
