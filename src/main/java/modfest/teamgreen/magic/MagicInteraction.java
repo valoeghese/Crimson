@@ -3,9 +3,10 @@ package modfest.teamgreen.magic;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ModifyingAttribute;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
@@ -49,7 +50,7 @@ public class MagicInteraction {
 		}
 	}
 
-	public void apply(IWorld world, MagicUser user, BlockPos pos) {
+	public void apply(IWorld world, MagicUser user, @Nullable BlockPos pos) {
 		int currentValue = -1; // -1 represents not started
 
 		for (ConfiguredAttribute attribute : this.components) {

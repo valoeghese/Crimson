@@ -37,7 +37,7 @@ public abstract class Attribute implements ModifyingAttribute {
 	 * @param pos If this was activated on something, represents the blockpos thereof. Otherwise null.
 	 * @return an int that can be passed on to following modifiers. Typically represents some kind of strength from 0-15.
 	 */
-	public abstract int activate(IWorld world, @Nullable MagicUser user, @Nullable BlockPos pos, ModifyingAttribute modifier);
+	public abstract int activate(IWorld world, MagicUser user, @Nullable BlockPos pos, ModifyingAttribute modifier);
 	/**
 	 * @param world the world
 	 * @param previous the int passed from the previous modifier
@@ -45,7 +45,7 @@ public abstract class Attribute implements ModifyingAttribute {
 	 * @param pos If this was activated on something, represents the blockpos thereof. Otherwise null.
 	 * @return an int that can be passed on to following modifiers. Typically represents some kind of strength from 0-15.
 	 */
-	public abstract int process(IWorld world, int previous, @Nullable MagicUser user, @Nullable BlockPos pos, ModifyingAttribute modifier);
+	public abstract int process(IWorld world, int previous, MagicUser user, @Nullable BlockPos pos, ModifyingAttribute modifier);
 
 	public static Attribute getById(Identifier id) {
 		return ID_TO_ATTRIBUTE.get(id);

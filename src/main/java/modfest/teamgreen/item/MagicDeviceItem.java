@@ -2,6 +2,7 @@ package modfest.teamgreen.item;
 
 import modfest.teamgreen.logic.MagicDeviceItemstack;
 import modfest.teamgreen.magic.MagicInteraction;
+import modfest.teamgreen.magic.MagicUser;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
@@ -21,8 +22,8 @@ public class MagicDeviceItem extends Item {
 			MagicDeviceData data = ((MagicDeviceItemstack) stack).getData();
 			MagicInteraction interaction = data.getInteraction();
 
-			if (data != null) {
-				// do stuff
+			if (interaction != null) {
+				interaction.apply(context.getWorld(), new MagicUser(context.getPlayer()), context.getBlockPos());
 			}
 		}
 
