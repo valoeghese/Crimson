@@ -1,31 +1,28 @@
 package modfest.teamgreen.magic;
 
 import modfest.teamgreen.magic.attribute.Attribute;
-import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ModifyingAttribute;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.IWorld;
 
-public class ConfiguredAttribute implements Attribute {
+public class ConfiguredAttribute {
 	public ConfiguredAttribute(Attribute attribute, Attribute[] modifiers) {
 		this.modifyingAttribute = new Modifying(modifiers);
+		this.baseAttribute = attribute;
 	}
 
-	public static ModifyingAttribute modifyingAttribute;
+	private final ModifyingAttribute modifyingAttribute;
+	private final Attribute baseAttribute;
 
-	@Override
-	public int activate(IWorld world, PlayerEntity caster, ModifyingAttribute modifier) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int activate(IWorld world, PlayerEntity caster) {
+		return this.baseAttribute.activate(world, caster, this.modifyingAttribute);
 	}
 
-	@Override
-	public int process(IWorld world, int previous, PlayerEntity caster, ModifyingAttribute modifier) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int process(IWorld world, int previous, PlayerEntity caster) {
+		return this.baseAttribute.process(world, previous, caster, this.modifyingAttribute);
 	}
 
-	public static class Modifying implements ModifyingAttribute {
+	private static class Modifying implements ModifyingAttribute {
 		private Modifying(ModifyingAttribute[] sources) {
 			this.sources = sources;
 		}
