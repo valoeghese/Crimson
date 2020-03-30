@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crimson:lazulite_ore"
+          "name": "crimson:lazulite"
         }
       ],
       "conditions": [
