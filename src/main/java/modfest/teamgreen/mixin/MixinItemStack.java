@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import modfest.teamgreen.item.MagicDeviceItem;
 import modfest.teamgreen.item.MagicDeviceItem.MagicDeviceData;
 import modfest.teamgreen.logic.MagicDeviceItemstack;
+import modfest.teamgreen.magic.MagicInteraction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
@@ -20,6 +21,8 @@ public class MixinItemStack implements MagicDeviceItemstack {
 	@Shadow
 	@Final
 	private Item item;
+	@Shadow
+	private CompoundTag tag;
 
 	private MagicDeviceData crimson_magicData = new MagicDeviceData();
 
@@ -54,5 +57,10 @@ public class MixinItemStack implements MagicDeviceItemstack {
 	@Override
 	public MagicDeviceData getData() {
 		return this.crimson_magicData;
+	}
+
+	@Override
+	public void setInteraction(MagicInteraction interaction) {
+		this.crimson_magicData.setInteraction(interaction);
 	}
 }

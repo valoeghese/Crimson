@@ -37,7 +37,10 @@ public class MagicDeviceItem extends Item {
 
 	public static class MagicDeviceData {
 		public void load(CompoundTag itemTag) {
-			// load data from tag if it exists
+			if (itemTag.contains("crimsonMagicDevice")) {
+				CompoundTag magicDevice = itemTag.getCompound("crimsonMagicDevice");
+
+			}
 		}
 
 		private MagicInteraction interaction;
@@ -46,6 +49,9 @@ public class MagicDeviceItem extends Item {
 			return this.interaction;
 		}
 
+		/**
+		 * Use MagicDeviceItemstack#setInteraction
+		 */
 		public void setInteraction(MagicInteraction interaction) {
 			this.interaction = interaction;
 		}
