@@ -4,6 +4,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import modfest.teamgreen.ModInit;
+import modfest.teamgreen.block.ModOreBlock.OreProperties;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -13,7 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public enum ModBlocks {
-	LAZULITE_ORE("lazulite_ore", Block::new, FabricBlockSettings.copy(Blocks.IRON_ORE));
+	LAZULITE_ORE("lazulite_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.IRON_ORE), new OreProperties().experience(2, 4));
 
 	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings) {
 		this(id, constructor, settings, new Item.Settings().group(ModInit.GROUP));

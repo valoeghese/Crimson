@@ -1,12 +1,18 @@
 package modfest.teamgreen.world;
 
 import modfest.teamgreen.ModInit;
+import modfest.teamgreen.block.ModBlocks;
 import modfest.teamgreen.world.crimson.CrimsonBrushlandsBiome;
 import modfest.teamgreen.world.crimson.CrimsonForestBiome;
 import modfest.teamgreen.world.crimson.CrimsonMarshlandBiome;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
 public class ModWorld {
@@ -20,6 +26,12 @@ public class ModWorld {
 	public static final Biome CRIMSON_MARSHLAND = new CrimsonMarshlandBiome();
 
 	public static void registerAll() {
+		ModInit.addFeatureTo(GenerationStep.Feature.UNDERGROUND_ORES,
+				Feature.ORE.configure(
+						new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, ModBlocks.LAZULITE_ORE.get().getDefaultState(), 6)
+				).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 0, 0, 33))),
+				b -> true);
+
 		registerBiome(CRIMSON_FOREST, "crimson_forest");
 		registerBiome(CRIMSON_BRUSHLAND, "crimson_brushland");
 		registerBiome(CRIMSON_MARSHLAND, "crimson_marshland");
