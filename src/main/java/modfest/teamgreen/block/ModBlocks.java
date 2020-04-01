@@ -6,16 +6,17 @@ import java.util.function.Function;
 import modfest.teamgreen.ModInit;
 import modfest.teamgreen.block.ModOreBlock.OreProperties;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public enum ModBlocks {
-	LAZULITE_ORE("lazulite_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.IRON_ORE), new OreProperties().experience(2, 4));
-
+	LAZULITE_ORE("lazulite_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.IRON_ORE), new OreProperties().experience(2, 4)),
+	CRIMSON_LEAVES("crimson_leaves", LeavesBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_LEAVES)),
+	CRIMSON_SAPLING("crimson_sapling", CrimsonSaplingBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_SAPLING)),
+	CRIMSON_LOG("crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.ACACIA_LOG));
 	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings) {
 		this(id, constructor, settings, new Item.Settings().group(ModInit.GROUP));
 	}
