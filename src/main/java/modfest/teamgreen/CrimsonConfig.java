@@ -9,12 +9,12 @@ import tk.valoeghese.zoesteriaconfig.api.ZoesteriaConfig;
 import tk.valoeghese.zoesteriaconfig.api.container.WritableConfig;
 import tk.valoeghese.zoesteriaconfig.api.template.ConfigTemplate;
 
-public class ModConfig {
+public class CrimsonConfig {
 	public int exampleField;
 
-	public static ModConfig load() {
-		File file = new File(FabricLoader.getInstance().getConfigDirectory().getPath() + "/" + ModInit.MOD_ID + ".cfg");	
-		ModConfig result = new ModConfig();
+	public static CrimsonConfig load() {
+		File file = new File(FabricLoader.getInstance().getConfigDirectory().getPath() + "/" + CrimsonInit.MOD_ID + ".cfg");	
+		CrimsonConfig result = new CrimsonConfig();
 
 		boolean write;
 

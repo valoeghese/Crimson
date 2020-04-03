@@ -4,7 +4,7 @@ import io.github.cottonmc.cotton.gui.CottonCraftingController;
 import io.github.cottonmc.cotton.gui.client.CottonInventoryScreen;
 import io.github.cottonmc.cotton.gui.widget.WGridPanel;
 import io.github.cottonmc.cotton.gui.widget.WItemSlot;
-import modfest.teamgreen.ModInit;
+import modfest.teamgreen.CrimsonInit;
 import modfest.teamgreen.crafting.MagicDeviceCrafting;
 import net.minecraft.container.ArrayPropertyDelegate;
 import net.minecraft.entity.player.PlayerEntity;
@@ -56,7 +56,7 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 		}
 	}
 
-	public static final Identifier ID = ModInit.from("magic_device_crafter");
+	public static final Identifier ID = CrimsonInit.from("magic_device_crafter");
 
 	public static class Screen extends CottonInventoryScreen<MagicDeviceCraftingController> {
 		public Screen(MagicDeviceCraftingController container, PlayerEntity player) {

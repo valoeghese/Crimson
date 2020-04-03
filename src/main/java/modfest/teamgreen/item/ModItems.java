@@ -2,7 +2,7 @@ package modfest.teamgreen.item;
 
 import java.util.function.Function;
 
-import modfest.teamgreen.ModInit;
+import modfest.teamgreen.CrimsonInit;
 import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
@@ -13,7 +13,7 @@ public enum ModItems {
 	LAZULITE("lazulite", Item::new, new Item.Settings());
 
 	private <T extends Item.Settings> ModItems(String id, Function<T, Item> constructor, T settings) {
-		this.item = Registry.register(Registry.ITEM, ModInit.from(id), constructor.apply((T) settings.group(ModInit.GROUP)));
+		this.item = Registry.register(Registry.ITEM, CrimsonInit.from(id), constructor.apply((T) settings.group(CrimsonInit.GROUP)));
 	}
 
 	private final Item item;

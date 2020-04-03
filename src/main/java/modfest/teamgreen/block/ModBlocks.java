@@ -3,7 +3,7 @@ package modfest.teamgreen.block;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import modfest.teamgreen.ModInit;
+import modfest.teamgreen.CrimsonInit;
 import modfest.teamgreen.block.ModOreBlock.OreProperties;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tools.FabricToolTags;
@@ -24,21 +24,21 @@ public enum ModBlocks {
 	CRIMSON_SAPLING("crimson_sapling", CrimsonSaplingBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_SAPLING)),
 	CRIMSON_LOG("crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.ACACIA_LOG));
 	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings) {
-		this(id, constructor, settings, new Item.Settings().group(ModInit.GROUP));
+		this(id, constructor, settings, new Item.Settings().group(CrimsonInit.GROUP));
 	}
 
 	private <T extends Object> ModBlocks(String id, BiFunction<Block.Settings, T, Block> constructor, FabricBlockSettings settings, T moddedBlockProperties) {
-		this(id, constructor, settings, moddedBlockProperties, new Item.Settings().group(ModInit.GROUP));
+		this(id, constructor, settings, moddedBlockProperties, new Item.Settings().group(CrimsonInit.GROUP));
 	}
 
 	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings, Item.Settings itemSettings) {
-		Identifier identifier = ModInit.from(id);
+		Identifier identifier = CrimsonInit.from(id);
 		this.block = Registry.register(Registry.BLOCK, identifier, constructor.apply(settings.build()));
 		this.item = Registry.register(Registry.ITEM, identifier, new BlockItem(this.block, itemSettings));
 	}
 
 	private <T extends Object> ModBlocks(String id, BiFunction<Block.Settings, T, Block> constructor, FabricBlockSettings settings, T moddedBlockProperties, Item.Settings itemSettings) {
-		Identifier identifier = ModInit.from(id);
+		Identifier identifier = CrimsonInit.from(id);
 		this.block = Registry.register(Registry.BLOCK, identifier, constructor.apply(settings.build(), moddedBlockProperties));
 		this.item = Registry.register(Registry.ITEM, identifier, new BlockItem(this.block, itemSettings));
 	}

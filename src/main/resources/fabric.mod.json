@@ -3,8 +3,8 @@
   "id": "crimson",
   "version": "1.0.0",
   
-  "name": "Placeholder",
-  "description": "placeholder!",
+  "name": "Crimson",
+  "description": "",
 
   "license": "placeholder",
   
@@ -12,10 +12,10 @@
   
   "entrypoints": {
     "main": [
-       "modfest.teamgreen.ModInit"
+       "modfest.teamgreen.CrimsonInit"
     ],
     "client": [
-       "modfest.teamgreen.ModClient"
+       "modfest.teamgreen.CrimsonClient"
     ]
   },
   

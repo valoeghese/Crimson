@@ -1,6 +1,6 @@
 package modfest.teamgreen.world;
 
-import modfest.teamgreen.ModInit;
+import modfest.teamgreen.CrimsonInit;
 import modfest.teamgreen.block.ModBlocks;
 import modfest.teamgreen.world.crimson.CrimsonBrushlandsBiome;
 import modfest.teamgreen.world.crimson.CrimsonForestBiome;
@@ -30,7 +30,7 @@ public class ModWorld {
 		registerBiome(CRIMSON_BRUSHLAND, "crimson_brushland");
 		registerBiome(CRIMSON_MARSHLAND, "crimson_marshland");
 
-		ModInit.addFeatureTo(GenerationStep.Feature.UNDERGROUND_ORES,
+		CrimsonInit.addFeatureTo(GenerationStep.Feature.UNDERGROUND_ORES,
 				Feature.ORE.configure(
 						new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, ModBlocks.LAZULITE_ORE.get().getDefaultState(), 6)
 				).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(10, 0, 0, 33))),
@@ -38,7 +38,7 @@ public class ModWorld {
 	}
 
 	private static final void registerBiome(Biome biome, String id) {
-		Registry.register(Registry.BIOME, ModInit.from(id), biome);
+		Registry.register(Registry.BIOME, CrimsonInit.from(id), biome);
 		ReflectionHacks.injectOverworldBiome(biome);
 	}
 

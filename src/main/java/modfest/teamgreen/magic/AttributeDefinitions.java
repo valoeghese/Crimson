@@ -3,7 +3,7 @@ package modfest.teamgreen.magic;
 import java.util.HashMap;
 import java.util.Map;
 
-import modfest.teamgreen.ModInit;
+import modfest.teamgreen.CrimsonInit;
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.TestAttribute;
 import net.minecraft.item.Item;
@@ -24,7 +24,7 @@ public class AttributeDefinitions {
 		return item != null && ATTRIBUTE_MAP.containsKey(item);
 	}
 
-	public static final Attribute TEST = new TestAttribute(ModInit.from("test"));
+	public static final Attribute TEST = new TestAttribute(CrimsonInit.from("test"));
 
 	public static Attribute ensureInit() {
 		return TEST;

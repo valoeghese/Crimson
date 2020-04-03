@@ -21,8 +21,8 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 
-public class ModInit implements ModInitializer {
-	public static final ModConfig CONFIG = ModConfig.load();
+public class CrimsonInit implements ModInitializer {
+	public static final CrimsonConfig CONFIG = CrimsonConfig.load();
 	public static final String MOD_ID = "crimson"; // until we come up with a better name
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "group"), () -> new ItemStack(ModItems.MAGIC_DEVICE.get()));
 
