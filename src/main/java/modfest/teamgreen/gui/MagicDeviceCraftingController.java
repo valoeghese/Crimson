@@ -78,6 +78,14 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 		public DefaultedList<ItemStack> getItems() {
 			return this.defaults;
 		}
+		// insertion check
+		@Override
+		public boolean isValidInvStack(int slot, ItemStack stack) {
+			if (slot == 12) {
+				return false;
+			}
+			return Inventory.super.isValidInvStack(slot, stack);
+		}
 		// Inventory
 		/**
 		 * Returns the inventory size.
