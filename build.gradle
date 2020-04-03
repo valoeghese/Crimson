@@ -18,16 +18,26 @@ repositories {
 	maven {
 		url "https://minecraft.curseforge.com/api/maven"
 	}
+	maven {
+        name = "CottonMC"
+        url = "http://server.bbkr.space:8081/artifactory/libs-release"
+    }
 }
 
 dependencies {
-	//to change the versions see the gradle.properties file
+	// minecraft
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	// fabric
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	// zoesteria config
 	modImplementation "tk.valoeghese:ZoesteriaConfig:1.2.0"
 	include "tk.valoeghese:ZoesteriaConfig:1.2.0"
+	// libgui
+	modImplementation "io.github.cottonmc:LibGui:${project.libgui_version}"
+	include "io.github.cottonmc:LibGui:${project.libgui_version}"
+	// @Nullable
 	compileOnly "com.google.code.findbugs:jsr305:3.0.2"
 }
 

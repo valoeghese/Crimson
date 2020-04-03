@@ -3,13 +3,16 @@ package modfest.teamgreen;
 import java.util.function.Predicate;
 
 import modfest.teamgreen.block.ModBlocks;
+import modfest.teamgreen.gui.MagicDeviceCraftingController;
 import modfest.teamgreen.item.ModItems;
 import modfest.teamgreen.world.ModWorld;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
@@ -34,8 +37,7 @@ public class ModInit implements ModInitializer {
 		ModItems.ensureInit();
 		ModBlocks.ensureInit();
 		ModWorld.registerAll();
-		// registerBlock( ... )
-		// registerFeature( ... )
+		ContainerProviderRegistry.INSTANCE.registerFactory(MagicDeviceCraftingController.ID, (syncId, id, player, buf) -> new MagicDeviceCraftingController(syncId, player.inventory));
 	}
 
 	private void addGeneration() {
