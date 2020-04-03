@@ -37,7 +37,7 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 
 		root.add(createPlayerInventoryPanel(), 0, 4);
 
-		this.addListener(new MagicDeviceCrafting());
+		this.addListener(new MagicDeviceCrafting(playerInventory.player));
 
 		root.validate(this);
 	}

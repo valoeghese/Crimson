@@ -8,14 +8,23 @@ import modfest.teamgreen.logic.MagicDeviceItemstack;
 import modfest.teamgreen.magic.AttributeDefinitions;
 import modfest.teamgreen.magic.MagicInteraction;
 import modfest.teamgreen.magic.attribute.Attribute;
+import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 import net.minecraft.container.Container;
 import net.minecraft.container.ContainerListener;
 import net.minecraft.container.Slot;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.ContainerSlotUpdateS2CPacket;
 import net.minecraft.util.DefaultedList;
 
 public class MagicDeviceCrafting implements ContainerListener {
+	public MagicDeviceCrafting(PlayerEntity player) {
+		this.player = player;
+	}
+
+	private final PlayerEntity player;
+
 	private Item[] recipe = new Item[12];
 	private boolean hasValidOutput = false;
 
@@ -61,7 +70,7 @@ public class MagicDeviceCrafting implements ContainerListener {
 					attributes.add(AttributeDefinitions.get(main));
 					attributes.add(AttributeDefinitions.get(this.recipe[start + 2]));
 				} else {
-					container.slots.get(48).setStack(ItemStack.EMPTY);
+					updateSlot(container, 48, ItemStack.EMPTY);
 					this.hasValidOutput = false;
 					return;
 				}
@@ -78,14 +87,19 @@ public class MagicDeviceCrafting implements ContainerListener {
 					((MagicDeviceItemstack) mdi).setInteraction(new MagicInteraction(attributes.toArray(new Attribute[0])));
 				}
 
-				container.getSlot(48).setStack(result);
+				updateSlot(container, 48, result);
 			} else {
 				this.hasValidOutput = false;
 			}
 		}
 	}
 
-	@Override
+	public void updateSlot(Container container, int slot, ItemStack stack) {
+		container.getSlot(slot).setStack(stack);
+		ContainerSlotUpdateS2CPacket packet = new ContainerSlotUpdateS2CPacket(container.syncId, slot, stack);
+		ServerSidePacketRegistry.INSTANCE.sendToPlayer(this.player, packet);
+	}
+
 	public void onContainerPropertyUpdate(Container container, int propertyId, int i) {
 
 	}
