@@ -41,7 +41,7 @@ public class MixinItemStack implements MagicDeviceItemstack {
 			if (item instanceof MagicDeviceItem) {
 				if (tag.contains("tag", 10)) {
 					CompoundTag itemTag = tag.getCompound("tag");
-					((MagicDeviceItemstack) item).getData().load(itemTag);
+					((MagicDeviceItemstack) (Object) result).getData().load(itemTag);
 				}
 			}
 		}
@@ -68,5 +68,11 @@ public class MixinItemStack implements MagicDeviceItemstack {
 		}
 
 		this.crimson_magicData.writeInteraction(this.tag);
+	}
+
+	@Inject(method = "copy", at = @At("RETURN"))
+	private void copy(CallbackInfoReturnable<ItemStack> cir) {
+		ItemStack result = cir.getReturnValue();
+		result.setTag(this.tag);
 	}
 }

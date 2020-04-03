@@ -55,13 +55,13 @@ public class MagicDeviceItem extends Item {
 			if (this.interaction != null) {
 				magicDevice.putIntArray("interaction", this.interaction.serialise());
 			}
-			itemTag.put("crimsonMagicDevice", itemTag);
+			itemTag.put("crimsonMagicDevice", magicDevice);
 		}
 
 		public void load(CompoundTag itemTag) {
 			if (itemTag.contains("crimsonMagicDevice")) {
 				CompoundTag magicDevice = itemTag.getCompound("crimsonMagicDevice");
-				
+
 				if (magicDevice.contains("interaction", 11)) {
 					int[] serialisedData = magicDevice.getIntArray("interaction");
 					this.setInteraction(MagicInteraction.deserialise(serialisedData));

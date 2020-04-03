@@ -22,6 +22,7 @@ public class TestAttribute extends Attribute {
 
 	@Override
 	public int process(IWorld world, int previous, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
+		System.out.println(pos);
 		if (pos != null) {
 			world.setBlockState(pos, Blocks.GOLD_ORE.getDefaultState(), 0b11);
 		}

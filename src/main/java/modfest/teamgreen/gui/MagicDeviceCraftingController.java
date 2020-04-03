@@ -33,7 +33,6 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 
 		// output slots
 		WItemSlot outputSlot = WItemSlot.outputOf(this.blockInventory, 12);
-		outputSlot.setModifiable(false);
 		root.add(outputSlot, 5, 1);
 
 		root.add(createPlayerInventoryPanel(), 0, 4);

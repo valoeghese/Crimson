@@ -19,7 +19,7 @@ public class MagicDeviceCraftingBlock extends Block {
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 		if (world.isClient) {
-			return ActionResult.PASS;
+			return ActionResult.SUCCESS;
 		}
 
 		ContainerProviderRegistry.INSTANCE.openContainer(MagicDeviceCraftingController.ID, player, e -> {});
