@@ -41,7 +41,6 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 		this.addListener(new MagicDeviceCrafting());
 
 		root.validate(this);
-		System.out.println(this.slots);
 	}
 
 	@Override

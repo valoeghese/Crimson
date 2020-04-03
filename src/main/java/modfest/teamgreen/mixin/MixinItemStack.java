@@ -62,6 +62,11 @@ public class MixinItemStack implements MagicDeviceItemstack {
 	@Override
 	public void setInteraction(MagicInteraction interaction) {
 		this.crimson_magicData.setInteraction(interaction);
+
+		if (this.tag == null) {
+			this.tag = new CompoundTag();
+		}
+
 		this.crimson_magicData.writeInteraction(this.tag);
 	}
 }

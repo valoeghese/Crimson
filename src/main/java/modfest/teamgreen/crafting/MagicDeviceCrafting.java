@@ -45,7 +45,7 @@ public class MagicDeviceCrafting implements ContainerListener {
 					}
 				}
 			}
-		} else if (slotId > 0) { // input
+		} else if (slotId > 0 && slotId < 12) { // input
 			this.recipe[slotId] = itemStack.getItem();
 
 			List<Attribute> attributes = new ArrayList<>();
@@ -77,6 +77,8 @@ public class MagicDeviceCrafting implements ContainerListener {
 					// make array, set interaction
 					((MagicDeviceItemstack) mdi).setInteraction(new MagicInteraction(attributes.toArray(new Attribute[0])));
 				}
+
+				container.getSlot(48).setStack(result);
 			} else {
 				this.hasValidOutput = false;
 			}
