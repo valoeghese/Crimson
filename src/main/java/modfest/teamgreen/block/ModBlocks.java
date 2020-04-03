@@ -9,6 +9,9 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tools.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.LogBlock;
+import net.minecraft.block.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
@@ -16,8 +19,10 @@ import net.minecraft.util.registry.Registry;
 
 public enum ModBlocks {
 	LAZULITE_ORE("lazulite_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.IRON_ORE).breakByTool(FabricToolTags.PICKAXES, 1), new OreProperties().experience(2, 4)),
-	MAGIC_DEVICE_CRAFTER("magic_device_crafter", MagicDeviceCraftingBlock::new, FabricBlockSettings.copy(Blocks.COBBLESTONE));
-
+	MAGIC_DEVICE_CRAFTER("magic_device_crafter", MagicDeviceCraftingBlock::new, FabricBlockSettings.copy(Blocks.COBBLESTONE)),
+	CRIMSON_LEAVES("crimson_leaves", LeavesBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_LEAVES)),
+	CRIMSON_SAPLING("crimson_sapling", CrimsonSaplingBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_SAPLING)),
+	CRIMSON_LOG("crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.ACACIA_LOG));
 	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings) {
 		this(id, constructor, settings, new Item.Settings().group(ModInit.GROUP));
 	}

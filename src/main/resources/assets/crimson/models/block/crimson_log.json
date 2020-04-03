@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "crimson:block/crimson_log_top",
+    "side": "crimson:block/crimson_log_side"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "block/leaves",
+  "textures": {
+    "all": "crimson:block/crimson_leaves"
+  }
+}
