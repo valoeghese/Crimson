@@ -48,21 +48,14 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 	public void close(PlayerEntity player) {
 		super.close(player);
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("#close:");
-		sb.append(world.isClient);
 		// drop non empty stacks
 		for (int i = 0; i < 12; ++i) {
 			ItemStack stack = this.blockInventory.getInvStack(i);
-			sb.append(stack + " ");
 
 			if (!stack.isEmpty()) {
 				this.world.spawnEntity(player.dropItem(stack, false));
 			}
 		}
-
-		sb.append("\n");
-		System.out.println(sb.toString());
 	}
 
 	public static final Identifier ID = ModInit.from("magic_device_crafter");

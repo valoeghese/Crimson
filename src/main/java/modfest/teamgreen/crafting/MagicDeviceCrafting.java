@@ -1,23 +1,90 @@
 package modfest.teamgreen.crafting;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import modfest.teamgreen.item.ModItems;
+import modfest.teamgreen.logic.MagicDeviceItemstack;
+import modfest.teamgreen.magic.AttributeDefinitions;
+import modfest.teamgreen.magic.MagicInteraction;
+import modfest.teamgreen.magic.attribute.Attribute;
 import net.minecraft.container.Container;
 import net.minecraft.container.ContainerListener;
+import net.minecraft.container.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DefaultedList;
 
 public class MagicDeviceCrafting implements ContainerListener {
+	private Item[] recipe = new Item[12];
+	private boolean hasValidOutput = false;
+
 	@Override
 	public void onContainerRegistered(Container container, DefaultedList<ItemStack> defaultedList) {
-		
+
 	}
 
 	@Override
 	public void onContainerSlotUpdate(Container container, int slotId, ItemStack itemStack) {
-		
+		// 36 - 47 input slots
+		slotId -= 36;
+		// 0 - 11
+		// column first
+
+		if (slotId == 12) { // output
+			if (this.hasValidOutput) {
+				if (itemStack.isEmpty()) {
+					// successfully craft
+					for (int i = 36; i < 48; ++i) {
+						Slot s = container.getSlot(i);
+						ItemStack stack = s.getStack();
+
+						if (AttributeDefinitions.isValid(stack.getItem())) {
+							stack.decrement(1);
+						}
+					}
+				}
+			}
+		} else if (slotId > 0) { // input
+			this.recipe[slotId] = itemStack.getItem();
+
+			List<Attribute> attributes = new ArrayList<>();
+
+			for (int column = 0; column < 4; ++column) {
+				int start = column * 3;
+				Item main = this.recipe[start + 1];
+
+				if (main == null) {
+					continue;
+				} else if (AttributeDefinitions.isValid(main)) {
+					attributes.add(AttributeDefinitions.get(this.recipe[start]));
+					attributes.add(AttributeDefinitions.get(main));
+					attributes.add(AttributeDefinitions.get(this.recipe[start + 2]));
+				} else {
+					container.slots.get(48).setStack(ItemStack.EMPTY);
+					this.hasValidOutput = false;
+					return;
+				}
+			}
+
+			if (!attributes.isEmpty()) {
+				this.hasValidOutput = true;
+
+				ItemStack result = new ItemStack(ModItems.MAGIC_DEVICE.get(), 1);
+				Object mdi = (Object) result;
+
+				if (mdi instanceof MagicDeviceItemstack) {
+					// make array, set interaction
+					((MagicDeviceItemstack) mdi).setInteraction(new MagicInteraction(attributes.toArray(new Attribute[0])));
+				}
+			} else {
+				this.hasValidOutput = false;
+			}
+		}
 	}
 
 	@Override
 	public void onContainerPropertyUpdate(Container container, int propertyId, int i) {
-		
+
 	}
 }
