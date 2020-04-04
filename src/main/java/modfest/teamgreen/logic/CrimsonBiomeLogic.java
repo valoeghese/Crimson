@@ -35,7 +35,7 @@ public class CrimsonBiomeLogic {
 	public void apply(Biome result, int genX, int genZ, Consumer<Biome> setReturnValue) {
 		double threshold = this.thresholdCache.apply(genX, genZ);
 
-		if (threshold > 0.21f) {
+		if (threshold > 0.18f) {
 			switch (result.getCategory()) {
 			case MUSHROOM:
 			case OCEAN:
