@@ -10,9 +10,10 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-public class RawElectricityAttribute extends Attribute {
-	public RawElectricityAttribute(Identifier id) {
+public class ChannelledElectricityAttribute extends Attribute {
+	public ChannelledElectricityAttribute(Identifier id) {
 		super(id, MORPHEME);
+		// TODO Auto-generated constructor stub
 	}
 
 	private void summonLightning(IWorld world, BlockPos pos, boolean cosmetic) {
@@ -27,61 +28,54 @@ public class RawElectricityAttribute extends Attribute {
 		if (world.getLevelProperties().isThundering()) {
 			BlockPos[] positions = modifier.positions(pos);
 			for (BlockPos pos1 : positions) {
-				summonLightning(world, pos1.add(new Vec3i(RAND.nextInt(14) - 7, 0, RAND.nextInt(14) - 7)), false);
+				summonLightning(world, pos1.add(new Vec3i(RAND.nextInt(8) - 4, 0, RAND.nextInt(8) - 4)), false);
 			}
+
+			// charged by lightning
 			return 15;
 		} else {
-			return 0;
+			// still able to provide some magical power since channelled
+			return 3;
 		}
 	}
 
 	@Override
 	public int process(IWorld world, int previous, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
-		boolean flag = previous == 15;
 		boolean thundering = world.getLevelProperties().isThundering();
 
-		if (thundering || flag) {
+		if (thundering || previous == 15) {
 			BlockPos[] positions = modifier.positions(pos);
 
-			int i = flag ? 10 : 7;
-			int i2 = 2 * i;
-
 			for (BlockPos pos1 : positions) {
-				summonLightning(world, pos1.add(new Vec3i(RAND.nextInt(i2) - i, 0, RAND.nextInt(i2) - i)), false);
+				summonLightning(world, pos1.add(new Vec3i(RAND.nextInt(8) - 4, 0, RAND.nextInt(8) - 4)), false);
 			}
 
 			if (thundering) { // charged by thunder
 				return 15;
 			} else {
-				// consume more "power" to do lightning
-				return (previous - 2) <= 0 ? 0 : previous - 2;
+				// consume more "power" to do lightning, but only -1 when channelled type
+				return previous == 0 ? 0 : previous - 1;
 			}
 		} else {
-			if (previous > 7) {
+			// cosmetic lightning at high numbers
+			if (previous > 12) {
 				BlockPos[] positions = modifier.positions(pos);
 
 				for (BlockPos pos1 : positions) {
 					summonLightning(world, pos1, true);
 				}
-
-				// consume more "power" to do lightning
-				return previous - 2;
 			}
 
+			// channelled electricity type : more efficient. always only subtract 1
 			return previous == 0 ? 0 : previous - 1;
 		}
 	}
 
 	@Override
 	public BlockPos[] positions(BlockPos base) {
-		BlockPos result = base.add(new Vec3i(RAND.nextInt(20) - 10, RAND.nextInt(20) - 10, RAND.nextInt(20) - 10));
-
-		if (result.getY() < 0) result = new BlockPos(result.getX(), 0, result.getZ());
-		else if (result.getY() > 255) result = new BlockPos(result.getX(), 255, result.getZ());
-
-		return new BlockPos[] {result};
+		return new BlockPos[] {base.add(new Vec3i(RAND.nextInt(14) - 7, 0, RAND.nextInt(14) - 7))};
 	}
 
-	// "lightning" / "thunderstorm"
-	public static final Morpheme MORPHEME = new Morpheme("naira", "nai", "nei", false);
+	// "channelling power"
+	public static final Morpheme MORPHEME = new Morpheme("eleri", "eli", "eli", true);
 }
