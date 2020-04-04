@@ -1,13 +1,19 @@
 package modfest.teamgreen.item;
 
+import java.util.List;
+
 import modfest.teamgreen.logic.MagicDeviceItemstack;
 import modfest.teamgreen.magic.MagicInteraction;
 import modfest.teamgreen.magic.MagicUser;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.world.World;
 
 public class MagicDeviceItem extends Item {
 	public MagicDeviceItem(Settings settings) {
@@ -28,6 +34,19 @@ public class MagicDeviceItem extends Item {
 		}
 
 		return ActionResult.PASS;
+	}
+
+	@Override
+	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+		Object stack0 = (Object) stack;
+		if (stack0 instanceof MagicDeviceItemstack) {
+			MagicDeviceData data = ((MagicDeviceItemstack) stack0).getData();
+			MagicInteraction interaction = data.getInteraction();
+
+			if (interaction != null) {
+				tooltip.add(new LiteralText(interaction.getMagicName()));
+			}
+		}
 	}
 
 	@Override

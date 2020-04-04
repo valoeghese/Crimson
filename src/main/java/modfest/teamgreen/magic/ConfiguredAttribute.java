@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ModifyingAttribute;
+import modfest.teamgreen.magic.language.Language;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
@@ -11,10 +12,23 @@ public final class ConfiguredAttribute {
 	public ConfiguredAttribute(Attribute attribute, ModifyingAttribute modifier) {
 		this.modifyingAttribute = modifier;
 		this.baseAttribute = attribute;
+
+		this.word = Language.createWord(attribute, modifier);
+		this.wordTriggersCloseFrontVowelHarmony = attribute.getMorpheme().closeFrontVowelHarmony;
 	}
 
 	private final ModifyingAttribute modifyingAttribute;
 	private final Attribute baseAttribute;
+	private final String word;
+	private final boolean wordTriggersCloseFrontVowelHarmony;
+
+	public String getWord() {
+		return this.word;
+	}
+
+	public boolean wordTriggersCloseFrontVowelHarmony() {
+		return this.wordTriggersCloseFrontVowelHarmony;
+	}
 
 	public int activate(IWorld world, MagicUser user, @Nullable BlockPos pos) {
 		return this.baseAttribute.activate(world, user, pos, this.modifyingAttribute);
@@ -36,7 +50,7 @@ public final class ConfiguredAttribute {
 
 	public static ConfiguredAttribute deserialise(int baseId, int modifierId0, int modifierId1) {
 		Attribute baseAttribute = Attribute.getBySaveId(baseId);
-		ModifyingAttribute modifier = null;
+		ModifyingAttribute modifier = ModifyingAttribute.DEFAULT;
 
 		if (modifierId0 != -1) {
 			if (modifierId1 != -1) {

@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+        "item": "crimson:bornite"
+    },
+    "result": "crimson:copper_ingot",
+    "experience": 0.1,
+    "cookingtime": 100
+}

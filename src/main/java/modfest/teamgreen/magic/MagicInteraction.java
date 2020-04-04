@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ModifyingAttribute;
+import modfest.teamgreen.magic.language.Language;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
@@ -36,7 +37,7 @@ public class MagicInteraction {
 
 			if (ma0 == null) {
 				if (ma1 == null) {
-					this.components.add(new ConfiguredAttribute(base, ModifyingAttribute.NO_MODIFIER));
+					this.components.add(new ConfiguredAttribute(base, ModifyingAttribute.DEFAULT));
 				} else {
 					this.components.add(new ConfiguredAttribute(base, ma1));
 				}
@@ -50,13 +51,21 @@ public class MagicInteraction {
 		if (this.components.isEmpty()) {
 			throw new RuntimeException("Empty Magical Device created!");
 		}
+
+		this.magicName = Language.magicName(this.components);
 	}
 
 	private MagicInteraction(List<ConfiguredAttribute> components) {
 		this.components = components;
+		this.magicName = Language.magicName(this.components);
 	}
 
 	private final List<ConfiguredAttribute> components;
+	private final String magicName;
+
+	public String getMagicName() {
+		return this.magicName;
+	}
 
 	public void apply(IWorld world, MagicUser user, @Nullable BlockPos pos) {
 		int currentValue = -1; // -1 represents not started

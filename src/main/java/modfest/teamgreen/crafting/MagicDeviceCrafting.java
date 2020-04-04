@@ -16,6 +16,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.ContainerSlotUpdateS2CPacket;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.DefaultedList;
 
 public class MagicDeviceCrafting implements ContainerListener {
@@ -54,8 +55,8 @@ public class MagicDeviceCrafting implements ContainerListener {
 					}
 				}
 			}
-		} else if (slotId > 0 && slotId < 12) { // input
-			this.recipe[slotId] = itemStack.getItem();
+		} else if (slotId >= 0 && slotId < 12) { // input
+			this.recipe[slotId] = itemStack.isEmpty() ? null : itemStack.getItem();
 
 			List<Attribute> attributes = new ArrayList<>();
 
@@ -96,8 +97,10 @@ public class MagicDeviceCrafting implements ContainerListener {
 
 	public void updateSlot(Container container, int slot, ItemStack stack) {
 		container.getSlot(slot).setStack(stack);
-		ContainerSlotUpdateS2CPacket packet = new ContainerSlotUpdateS2CPacket(container.syncId, slot, stack);
-		ServerSidePacketRegistry.INSTANCE.sendToPlayer(this.player, packet);
+		if (this.player instanceof ServerPlayerEntity) {
+			ContainerSlotUpdateS2CPacket packet = new ContainerSlotUpdateS2CPacket(container.syncId, slot, stack);
+			ServerSidePacketRegistry.INSTANCE.sendToPlayer(this.player, packet);
+		}
 	}
 
 	public void onContainerPropertyUpdate(Container container, int propertyId, int i) {

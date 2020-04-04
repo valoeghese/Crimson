@@ -8,6 +8,7 @@ import net.minecraft.util.math.BlockPos;
 public final class MagicUser {
 	public MagicUser(PlayerEntity player) {
 		this.player = player;
+		this.pos = player.getBlockPos();
 		this.type = Type.PLAYER;
 	}
 
@@ -19,16 +20,14 @@ public final class MagicUser {
 	private final Type type;
 	@Nullable
 	private PlayerEntity player;
-	@Nullable
 	private BlockPos pos;
 
 	public Type type() {
 		return this.type;
 	}
 
-	@Nullable
 	/**
-	 * @return the position of the block user, if a block
+	 * @return the position of user
 	 */
 	public BlockPos blockPos() {
 		return this.pos;

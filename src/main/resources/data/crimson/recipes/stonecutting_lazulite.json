@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "crimson:lazulite"
+    },
+    "result": "crimson:cut_lazulite",
+    "count": 1
+}
