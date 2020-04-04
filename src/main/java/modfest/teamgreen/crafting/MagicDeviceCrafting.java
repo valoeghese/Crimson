@@ -90,6 +90,7 @@ public class MagicDeviceCrafting implements ContainerListener {
 
 				updateSlot(container, 48, result);
 			} else {
+				updateSlot(container, 48, ItemStack.EMPTY);
 				this.hasValidOutput = false;
 			}
 		}
