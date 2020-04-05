@@ -1,6 +1,12 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "crimson:block/magic_device_crafter"
-  }
+    "parent": "block/cube",
+    "textures": {
+        "particle": "crimson:block/magic_device_crafter_side",
+        "down": "crimson:block/magic_device_crafter_down",
+        "up": "crimson:block/magic_device_crafter_up",
+        "north": "crimson:block/magic_device_crafter_side",
+        "east": "crimson:block/magic_device_crafter_side",
+        "south": "crimson:block/magic_device_crafter_side",
+        "west": "crimson:block/magic_device_crafter_side"
+    }
 }

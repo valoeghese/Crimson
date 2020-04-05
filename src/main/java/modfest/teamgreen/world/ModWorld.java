@@ -7,6 +7,7 @@ import modfest.teamgreen.block.ModBlocks;
 import modfest.teamgreen.world.crimson.CrimsonBrushlandsBiome;
 import modfest.teamgreen.world.crimson.CrimsonForestBiome;
 import modfest.teamgreen.world.crimson.CrimsonMarshlandBiome;
+import modfest.teamgreen.world.crimson.CrimsonRiver;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
@@ -29,41 +30,43 @@ public class ModWorld {
 	public static final Biome CRIMSON_FOREST = new CrimsonForestBiome();
 	public static final Biome CRIMSON_BRUSHLAND = new CrimsonBrushlandsBiome();
 	public static final Biome CRIMSON_MARSHLAND = new CrimsonMarshlandBiome();
+	public static final Biome CRIMSON_RIVER = new CrimsonRiver();
 
 	public static void registerAll() {
 		registerBiome(CRIMSON_FOREST, "crimson_forest");
 		registerBiome(CRIMSON_BRUSHLAND, "crimson_brushland");
 		registerBiome(CRIMSON_MARSHLAND, "crimson_marshland");
+		registerBiome(CRIMSON_RIVER, "crimson_river");
 
 		// lazulite
 		addFeatureTo(GenerationStep.Feature.UNDERGROUND_ORES,
 				Feature.ORE.configure(
 						new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, ModBlocks.LAZULITE_ORE.get().getDefaultState(), 6)
-				).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(3, 0, 0, 33))),
+						).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(3, 0, 0, 33))),
 				b -> true);
 		// realgar
 		addFeatureTo(GenerationStep.Feature.UNDERGROUND_ORES,
 				Feature.ORE.configure(
 						new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, ModBlocks.REALGAR_ORE.get().getDefaultState(), 6)
-				).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(5, 0, 0, 20))),
+						).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(5, 0, 0, 20))),
 				b -> true);
 		// vanadinite
 		addFeatureTo(GenerationStep.Feature.UNDERGROUND_ORES,
 				Feature.ORE.configure(
 						new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, ModBlocks.VANADINITE_ORE.get().getDefaultState(), 10)
-				).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(2, 12, 0, 18))),
+						).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(2, 12, 0, 18))),
 				b -> true);
 		// celestine
 		addFeatureTo(GenerationStep.Feature.UNDERGROUND_ORES,
 				Feature.ORE.configure(
 						new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, ModBlocks.CELESTINE_ORE.get().getDefaultState(), 3)
-				).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(1, 0, 0, 16))),
+						).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(1, 0, 0, 16))),
 				b -> true);
 		// bornite
 		addFeatureTo(GenerationStep.Feature.UNDERGROUND_ORES,
 				Feature.ORE.configure(
 						new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, ModBlocks.BORNITE.get().getDefaultState(), 12)
-				).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(17, 0, 0, 100))),
+						).createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(17, 0, 0, 100))),
 				b -> true);
 	}
 

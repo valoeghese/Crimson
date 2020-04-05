@@ -39,12 +39,15 @@ public class CrimsonBiomeLogic {
 			switch (result.getCategory()) {
 			case MUSHROOM:
 			case OCEAN:
+				break;
 			case RIVER:
+				setReturnValue.accept(ModWorld.CRIMSON_RIVER);
 				break;
 			case TAIGA:
 			case JUNGLE:
 			case FOREST:
 				setReturnValue.accept(ModWorld.CRIMSON_FOREST);
+				break;
 			case EXTREME_HILLS:
 			case SWAMP:
 				setReturnValue.accept(ModWorld.CRIMSON_MARSHLAND);

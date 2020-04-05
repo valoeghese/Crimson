@@ -1,7 +1,6 @@
 {
-  "parent": "block/cube_column",
+  "parent": "block/cube_all",
   "textures": {
-    "end": "crimson:block/crimson_log_top",
-    "side": "crimson:block/crimson_log_side"
+    "all": "crimson:block/crimson_log"
   }
 }
