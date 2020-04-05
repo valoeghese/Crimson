@@ -41,7 +41,7 @@ public class TransportationAttribute extends Attribute {
 						int dx = x1 - x0;
 						int dz = z1 - z0;
 
-						pos = pos.add(dx * 0.5 * previous, 0, dz * 0.5 * previous);
+						pos = pos.add(dx * 0.7 * previous, 0, dz * 0.7 * previous);
 					}
 				}
 			}
@@ -73,7 +73,7 @@ public class TransportationAttribute extends Attribute {
 			break;
 		}
 
-		return new BlockPos[] {base.add(direction.getOffsetX() * 5 * strength, 0, direction.getOffsetZ() * 5 * strength)};
+		return new BlockPos[] {base.add(direction.getOffsetX() * 12 * strength, 0, direction.getOffsetZ() * 12 * strength)};
 	}
 
 	private static void teleport(IWorld world, MagicUser user, BlockPos pos, int strength) {

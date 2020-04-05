@@ -1,0 +1,20 @@
+{
+  "item.crimson.celestine": "Celestine",
+  "item.crimson.copper_ingot": "Copper Ingot",
+  "item.crimson.cut_lazulite": "Cut Lazulite",
+  "item.crimson.lazulite": "Celestine",
+  "item.crimson.magic_device": "Magic Device",
+  "item.crimson.realgar": "Realgar",
+  "item.crimson.vanadinite": "Vanadinite",
+  
+  "block.crimson.bornite": "Bornite",
+  "block.crimson.celestine_ore": "Celestine Ore",
+  "block.crimson.lazulite_ore": "Lazulite Ore",
+  "block.crimson.magic_device_crafter": "Magic Device Crafter",
+  "block.crimson.realgar_ore": "Realgar Ore",
+  "block.crimson.vanadinite_ore": "Vanadinite Ore",
+  
+  "biome.crimson.crimson_forest": "Crimson Forest",
+  "biome.crimson.crimson_brushland": "Crimson Brushland",
+  "biome.crimson.crimson_marshland": "Crimson Marshland"
+}
