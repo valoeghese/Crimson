@@ -20,9 +20,9 @@ import net.minecraft.util.registry.Registry;
 public enum ModBlocks {
 	LAZULITE_ORE("lazulite_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.IRON_ORE).breakByTool(FabricToolTags.PICKAXES, 2), new OreProperties().experience(2, 5)),
 	REALGAR_ORE("realgar_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.COAL_ORE).breakByTool(FabricToolTags.PICKAXES, 1), new OreProperties().experience(1, 3)),
-	BORNITE("bornite", ModOreBlock::new, FabricBlockSettings.copy(Blocks.COAL_ORE).breakByTool(FabricToolTags.PICKAXES, 1), new OreProperties().experience(1, 2)),
+	BORNITE("bornite", ModOreBlock::new, FabricBlockSettings.copy(Blocks.COAL_ORE).breakByTool(FabricToolTags.PICKAXES, 0), new OreProperties().experience(1, 2)),
 	VANADINITE_ORE("vanadinite_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.COAL_ORE).breakByTool(FabricToolTags.PICKAXES, 1), new OreProperties().experience(2, 3)),
-	CELESTINE_ORE("celestine_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.COAL_ORE).breakByTool(FabricToolTags.PICKAXES, 1), new OreProperties().experience(2, 4)),
+	CELESTINE_ORE("celestine_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.COAL_ORE).breakByTool(FabricToolTags.PICKAXES, 3), new OreProperties().experience(2, 4)),
 	MAGIC_DEVICE_CRAFTER("magic_device_crafter", MagicDeviceCraftingBlock::new, FabricBlockSettings.copy(Blocks.COBBLESTONE)),
 	CRIMSON_LEAVES("crimson_leaves", LeavesBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_LEAVES)),
 	CRIMSON_SAPLING("crimson_sapling", CrimsonSaplingBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_SAPLING)),

@@ -24,8 +24,9 @@ public class RawElectricityAttribute extends Attribute {
 
 	@Override
 	public int activate(IWorld world, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
+		pos = usagePosIfNull(user, pos);
 		if (world.getLevelProperties().isThundering()) {
-			BlockPos[] positions = modifier.positions(pos);
+			BlockPos[] positions = modifier.positions(pos, 1);
 			for (BlockPos pos1 : positions) {
 				summonLightning(world, pos1.add(new Vec3i(RAND.nextInt(14) - 7, 0, RAND.nextInt(14) - 7)), false);
 			}
@@ -37,11 +38,12 @@ public class RawElectricityAttribute extends Attribute {
 
 	@Override
 	public int process(IWorld world, int previous, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
+		pos = usagePosIfNull(user, pos);
 		boolean flag = previous == 15;
 		boolean thundering = world.getLevelProperties().isThundering();
 
 		if (thundering || flag) {
-			BlockPos[] positions = modifier.positions(pos);
+			BlockPos[] positions = modifier.positions(pos, previous);
 
 			int i = flag ? 10 : 7;
 			int i2 = 2 * i;
@@ -58,7 +60,7 @@ public class RawElectricityAttribute extends Attribute {
 			}
 		} else {
 			if (previous > 7) {
-				BlockPos[] positions = modifier.positions(pos);
+				BlockPos[] positions = modifier.positions(pos, previous);
 
 				for (BlockPos pos1 : positions) {
 					summonLightning(world, pos1, true);
@@ -73,7 +75,7 @@ public class RawElectricityAttribute extends Attribute {
 	}
 
 	@Override
-	public BlockPos[] positions(BlockPos base) {
+	public BlockPos[] positions(BlockPos base, int strength) {
 		BlockPos result = base.add(new Vec3i(RAND.nextInt(20) - 10, RAND.nextInt(20) - 10, RAND.nextInt(20) - 10));
 
 		if (result.getY() < 0) result = new BlockPos(result.getX(), 0, result.getZ());

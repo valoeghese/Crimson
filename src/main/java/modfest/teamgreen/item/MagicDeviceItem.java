@@ -78,12 +78,14 @@ public class MagicDeviceItem extends Item {
 		}
 
 		public void load(CompoundTag itemTag) {
-			if (itemTag.contains("crimsonMagicDevice")) {
-				CompoundTag magicDevice = itemTag.getCompound("crimsonMagicDevice");
+			if (itemTag != null) {
+				if (itemTag.contains("crimsonMagicDevice")) {
+					CompoundTag magicDevice = itemTag.getCompound("crimsonMagicDevice");
 
-				if (magicDevice.contains("interaction", 11)) {
-					int[] serialisedData = magicDevice.getIntArray("interaction");
-					this.setInteraction(MagicInteraction.deserialise(serialisedData));
+					if (magicDevice.contains("interaction", 11)) {
+						int[] serialisedData = magicDevice.getIntArray("interaction");
+						this.setInteraction(MagicInteraction.deserialise(serialisedData));
+					}
 				}
 			}
 		}

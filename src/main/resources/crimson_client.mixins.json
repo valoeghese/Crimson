@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_8",
   "client": [
     "MixinGameRenderer",
-    "MixinOverworldDimension"
+    "MixinOverworldDimension",
+    "MixinCapeFeatureRenderer"
   ],
   "injectors": {
     "defaultRequire": 1

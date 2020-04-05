@@ -1,15 +1,16 @@
 package modfest.teamgreen.magic.attribute;
 
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 
 public interface ModifyingAttribute {
-	BlockPos[] positions(BlockPos base);
+	BlockPos[] positions(BlockPos base, int strength);
 
 	static ModifyingAttribute DEFAULT = new Default() {};
 
 	static interface Default extends ModifyingAttribute {
 		@Override
-		default BlockPos[] positions(BlockPos base) {
+		default BlockPos[] positions(BlockPos base, int strength) {
 			return new BlockPos[] {base};
 		}
 	}
@@ -27,9 +28,9 @@ public interface ModifyingAttribute {
 		}
 
 		@Override
-		public BlockPos[] positions(BlockPos base) {
-			BlockPos[] pos0 = this.ma0.positions(base);
-			BlockPos[] pos1 = this.ma1.positions(base);
+		public BlockPos[] positions(BlockPos base, int strength) {
+			BlockPos[] pos0 = this.ma0.positions(base, MathHelper.floor(strength / 2.0));
+			BlockPos[] pos1 = this.ma1.positions(base, MathHelper.floor(strength / 2.0));
 
 			if (pos0.length == 1) {
 				if (pos1.length == 1) {

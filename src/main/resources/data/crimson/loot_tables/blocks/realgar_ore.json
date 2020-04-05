@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crimson:realgar_ore"
+          "name": "crimson:realgar"
         }
       ],
       "conditions": [

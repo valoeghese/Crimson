@@ -7,8 +7,10 @@ import modfest.teamgreen.CrimsonInit;
 import modfest.teamgreen.item.ModItems;
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ChannelledElectricityAttribute;
+import modfest.teamgreen.magic.attribute.FlameAttribute;
 import modfest.teamgreen.magic.attribute.RawElectricityAttribute;
 import modfest.teamgreen.magic.attribute.TestAttribute;
+import modfest.teamgreen.magic.attribute.TransportationAttribute;
 import net.minecraft.item.Item;
 
 public class AttributeDefinitions {
@@ -29,6 +31,8 @@ public class AttributeDefinitions {
 	public static final Attribute TEST = new TestAttribute(CrimsonInit.from("test"));
 	public static final Attribute BIRI_BIRI = new RawElectricityAttribute(CrimsonInit.from("biri_biri"));
 	public static final Attribute CHANNELLED_ELECTRICITY = new ChannelledElectricityAttribute(CrimsonInit.from("channelled_electricity"));
+	public static final Attribute TRANSPORTATION = new TransportationAttribute(CrimsonInit.from("transportation"));
+	public static final Attribute FLAME = new FlameAttribute(CrimsonInit.from("flame"));
 
 	public static Attribute ensureInit() {
 		return TEST;
@@ -37,5 +41,7 @@ public class AttributeDefinitions {
 	static {
 		ATTRIBUTE_MAP.put(ModItems.LAZULITE.get(), BIRI_BIRI);
 		ATTRIBUTE_MAP.put(ModItems.CUT_LAZULITE.get(), CHANNELLED_ELECTRICITY);
+		ATTRIBUTE_MAP.put(ModItems.CELESTINE.get(), TRANSPORTATION);
+		ATTRIBUTE_MAP.put(ModItems.REALGAR.get(), FLAME);
 	}
 }

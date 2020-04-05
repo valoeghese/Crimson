@@ -26,7 +26,7 @@ public class ChannelledElectricityAttribute extends Attribute {
 	@Override
 	public int activate(IWorld world, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
 		if (world.getLevelProperties().isThundering()) {
-			BlockPos[] positions = modifier.positions(pos);
+			BlockPos[] positions = modifier.positions(pos, 1);
 			for (BlockPos pos1 : positions) {
 				summonLightning(world, pos1.add(new Vec3i(RAND.nextInt(8) - 4, 0, RAND.nextInt(8) - 4)), false);
 			}
@@ -44,7 +44,7 @@ public class ChannelledElectricityAttribute extends Attribute {
 		boolean thundering = world.getLevelProperties().isThundering();
 
 		if (thundering || previous == 15) {
-			BlockPos[] positions = modifier.positions(pos);
+			BlockPos[] positions = modifier.positions(pos, previous);
 
 			for (BlockPos pos1 : positions) {
 				summonLightning(world, pos1.add(new Vec3i(RAND.nextInt(8) - 4, 0, RAND.nextInt(8) - 4)), false);
@@ -59,7 +59,7 @@ public class ChannelledElectricityAttribute extends Attribute {
 		} else {
 			// cosmetic lightning at high numbers
 			if (previous > 12) {
-				BlockPos[] positions = modifier.positions(pos);
+				BlockPos[] positions = modifier.positions(pos, previous);
 
 				for (BlockPos pos1 : positions) {
 					summonLightning(world, pos1, true);
@@ -72,7 +72,7 @@ public class ChannelledElectricityAttribute extends Attribute {
 	}
 
 	@Override
-	public BlockPos[] positions(BlockPos base) {
+	public BlockPos[] positions(BlockPos base, int strength) {
 		return new BlockPos[] {base.add(new Vec3i(RAND.nextInt(14) - 7, 0, RAND.nextInt(14) - 7))};
 	}
 

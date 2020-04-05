@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crimson:vanadinite_ore"
+          "name": "crimson:vanadinite"
         }
       ],
       "conditions": [

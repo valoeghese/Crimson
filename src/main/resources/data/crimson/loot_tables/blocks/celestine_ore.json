@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crimson:celestine_ore"
+          "name": "crimson:celestine"
         }
       ],
       "conditions": [

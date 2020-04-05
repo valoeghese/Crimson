@@ -87,6 +87,13 @@ public abstract class Attribute implements ModifyingAttribute {
 		return SAVE_ID_MAP.get(id);
 	}
 
+	public static BlockPos usagePosIfNull(MagicUser user, BlockPos pos) {
+		if (pos == null) {
+			return user.blockPos();
+		}
+		return pos;
+	}
+
 	private static int currentSaveId = 0;
 	private static final Map<Identifier, Attribute> ID_TO_ATTRIBUTE = new HashMap<>();
 	private static final Int2ObjectMap<Attribute> SAVE_ID_MAP = new Int2ObjectArrayMap<>();
