@@ -26,7 +26,8 @@ public enum ModBlocks {
 	MAGIC_DEVICE_CRAFTER("magic_device_crafter", MagicDeviceCraftingBlock::new, FabricBlockSettings.copy(Blocks.COBBLESTONE)),
 	CRIMSON_LEAVES("crimson_leaves", LeavesBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_LEAVES)),
 	CRIMSON_SAPLING("crimson_sapling", CrimsonSaplingBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_SAPLING)),
-	CRIMSON_LOG("crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.ACACIA_LOG));
+	CRIMSON_LOG("crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.ACACIA_LOG)),
+	CRIMSON_THORN("crimson_thorn", CrimsonThornBlock::new, FabricBlockSettings.copy(Blocks.FERN));
 
 	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings) {
 		this(id, constructor, settings, new Item.Settings().group(CrimsonInit.GROUP));

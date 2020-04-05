@@ -1,6 +1,6 @@
 package modfest.teamgreen.block;
 
-import modfest.teamgreen.world.Features;
+import modfest.teamgreen.world.CrimsonBiomeFeatures;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
@@ -14,6 +14,6 @@ import java.util.Random;
 public class CrimsonSaplingGenerator extends SaplingGenerator {
     @Override
     protected ConfiguredFeature<BranchedTreeFeatureConfig, ?> createTreeFeature(Random random, boolean bl) {
-        return Features.CRIMSON_TREE_FEATURE;
+        return CrimsonBiomeFeatures.CRIMSON_TREE_FEATURE;
     }
 }

@@ -1,7 +1,5 @@
 package modfest.teamgreen;
 
-import java.util.function.Predicate;
-
 import modfest.teamgreen.block.ModBlocks;
 import modfest.teamgreen.gui.MagicDeviceCraftingController;
 import modfest.teamgreen.item.ModItems;
@@ -10,16 +8,11 @@ import modfest.teamgreen.world.ModWorld;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
-import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
 
 public class CrimsonInit implements ModInitializer {
 	public static final CrimsonConfig CONFIG = CrimsonConfig.load();
@@ -30,7 +23,6 @@ public class CrimsonInit implements ModInitializer {
 	public void onInitialize() {
 		// access CONFIG.exampleField etc
 		registerAll();
-		addGeneration();
 	}
 
 	private void registerAll() {
@@ -39,23 +31,6 @@ public class CrimsonInit implements ModInitializer {
 		ModWorld.registerAll();
 		ContainerProviderRegistry.INSTANCE.registerFactory(MagicDeviceCraftingController.ID, (syncId, id, player, buf) -> new MagicDeviceCraftingController(syncId, player.inventory));
 		AttributeDefinitions.ensureInit();
-	}
-
-	private void addGeneration() {
-		// addFeatureTo( ... )
-	}
-
-	public static <C extends FeatureConfig, F extends Feature<C>, T extends ConfiguredFeature<C, F>> void addFeatureTo(final GenerationStep.Feature step, final T feature, final Predicate<Biome> predicate) {
-		Registry.BIOME.forEach(biome -> {
-			if (predicate.test(biome)) {
-				biome.addFeature(step, feature);
-			}
-		});
-		RegistryEntryAddedCallback.event(Registry.BIOME).register((rawId, id, biome) -> {
-			if (predicate.test(biome)) {
-				biome.addFeature(step, feature);
-			}
-		});
 	}
 
 	public static void registerFeature(String id, Feature<?> feature) {

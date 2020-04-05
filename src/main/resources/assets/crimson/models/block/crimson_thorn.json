@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "crimson:block/crimson_thorn"
+  }
+}

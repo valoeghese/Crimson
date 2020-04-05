@@ -1,14 +1,12 @@
 package modfest.teamgreen.world.crimson;
 
-import modfest.teamgreen.world.Features;
+import modfest.teamgreen.world.CrimsonBiomeFeatures;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.carver.Carver;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
-import net.minecraft.world.gen.feature.MineshaftFeature;
-import net.minecraft.world.gen.feature.MineshaftFeatureConfig;
+import net.minecraft.world.gen.decorator.CountChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
 
 public class CrimsonForestBiome extends CrimsonBaseBiome {
 	public CrimsonForestBiome() {
@@ -16,22 +14,17 @@ public class CrimsonForestBiome extends CrimsonBaseBiome {
 				.category(Biome.Category.FOREST)
 				.depth(0.2f)
 				.scale(0.38f));
-		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Features.CRIMSON_TREE_FEATURE);
-		this.addStructureFeature(Feature.MINESHAFT.configure(new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL)));
-		this.addStructureFeature(Feature.STRONGHOLD.configure(FeatureConfig.DEFAULT));
-		this.addStructureFeature(Feature.STRONGHOLD.configure(FeatureConfig.DEFAULT));
-		DefaultBiomeFeatures.addLandCarvers(this);
-		DefaultBiomeFeatures.addDefaultStructures(this);
+
 		DefaultBiomeFeatures.addDefaultLakes(this);
-		DefaultBiomeFeatures.addDungeons(this);
-		DefaultBiomeFeatures.addForestFlowers(this);
-		DefaultBiomeFeatures.addMineables(this);
-		DefaultBiomeFeatures.addDefaultOres(this);
-		DefaultBiomeFeatures.addDefaultDisks(this);
-		DefaultBiomeFeatures.addDefaultFlowers(this);
-		DefaultBiomeFeatures.addForestGrass(this);
 		DefaultBiomeFeatures.addDefaultMushrooms(this);
 		DefaultBiomeFeatures.addDefaultVegetation(this);
-		DefaultBiomeFeatures.addSprings(this);
+
+		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, CrimsonBiomeFeatures.CRIMSON_TREE_FEATURE.createDecoratedFeature(
+				Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.1f, 1))));
+		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, CrimsonBiomeFeatures.CRIMSON_LARGE_TREE_FEATURE.createDecoratedFeature(
+				Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(0, 0.4f, 1))));
+		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, CrimsonBiomeFeatures.CRIMSON_THORN_FEATURE.createDecoratedFeature(
+				Decorator.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new CountChanceDecoratorConfig(0, 0.3f))));
+		DefaultBiomeFeatures.addForestGrass(this);
 	}
 }
