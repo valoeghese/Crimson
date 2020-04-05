@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowerBlock;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -18,7 +19,7 @@ public final class CrimsonTendrilsBlock extends FlowerBlock {
 
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		if (entity instanceof LivingEntity) {
+		if (entity instanceof LivingEntity && entity.getType() != EntityType.SPIDER) {
 			LivingEntity livingEntity = (LivingEntity) entity;
 			if (!livingEntity.isInvulnerableTo(DamageSource.WITHER)) {
 				livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 80));

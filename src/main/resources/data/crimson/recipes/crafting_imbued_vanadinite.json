@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "crimson:vanadinite"
+        },
+        {
+            "item": "crimson:crimson_essence"
+        }
+    ],
+    "result": {
+        "item": "crimson:imbued_vanadinite",
+        "count": 1
+    }
+}

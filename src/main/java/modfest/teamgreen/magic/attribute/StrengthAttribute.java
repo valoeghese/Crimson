@@ -29,7 +29,8 @@ public class StrengthAttribute extends Attribute {
 	@Override
 	public int activate(IWorld world, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
 		pos = usagePosIfNull(user, pos);
-		world.getEntities(LivingEntity.class, new Box(pos).expand(1.0), le -> true).forEach(le -> le.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20)));
+		double m = modifier.power(world, pos);
+		world.getEntities(LivingEntity.class, new Box(pos).expand(1.0), le -> true).forEach(le -> le.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, (int) (m < 2 ? 20 : 10 * m))));
 		return 15;
 	}
 
@@ -37,7 +38,7 @@ public class StrengthAttribute extends Attribute {
 	public int process(IWorld world, int previous, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
 		pos = usagePosIfNull(user, pos);
 		double m = modifier.power(world, pos);
-		world.getEntities(LivingEntity.class, new Box(pos).expand(1.0), le -> true).forEach(le -> le.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, (int) (m < 2 ? 20 : 10 * m))));
+		world.getEntities(LivingEntity.class, new Box(pos).expand(previous == 0 ? 0.5 : previous + 0.5), le -> true).forEach(le -> le.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, (int) (m < 2 ? 20 : 10 * m))));
 		return 15;
 	}
 
@@ -46,5 +47,5 @@ public class StrengthAttribute extends Attribute {
 		return 15.0;
 	}
 
-	public static final Morpheme MORPHEME = new Morpheme("nakha", "nao", "ne", true);
+	public static final Morpheme MORPHEME = new Morpheme("nakha", "nao", "ne", false);
 }

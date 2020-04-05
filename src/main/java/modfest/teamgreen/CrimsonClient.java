@@ -12,5 +12,6 @@ public class CrimsonClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		ScreenProviderRegistry.INSTANCE.registerFactory(MagicDeviceCraftingController.ID, (syncId, id, player, buf) -> new MagicDeviceCraftingController.Screen(new MagicDeviceCraftingController(syncId, player.inventory), player));
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_THORN.get(), RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_TENDRILS.get(), RenderLayer.getTranslucent());
 	}
 }
