@@ -3,6 +3,7 @@ package modfest.teamgreen.magic.attribute;
 import modfest.teamgreen.magic.MagicUser;
 import modfest.teamgreen.magic.language.Morpheme;
 import net.minecraft.entity.LightningEntity;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -35,6 +36,7 @@ public class ChannelledElectricityAttribute extends Attribute {
 			return 15;
 		} else {
 			// still able to provide some magical power since channelled
+			spawnParticle(world, ParticleTypes.SMOKE, 3, 0.5, pos, 0.0, 0.2, 0.0);
 			return 3;
 		}
 	}
@@ -64,16 +66,27 @@ public class ChannelledElectricityAttribute extends Attribute {
 				for (BlockPos pos1 : positions) {
 					summonLightning(world, pos1, true);
 				}
+			} else {
+				spawnParticle(world, ParticleTypes.SMOKE, 3, 0.5, pos, 0.0, 0.2, 0.0);
 			}
 
-			// channelled electricity type : more efficient. always only subtract 1
-			return previous == 0 ? 0 : previous - 1;
+			// channelled electricity type : more efficient. always only subtract 1, provide 3 min
+			return previous < 4 ? 3 : previous - 1;
 		}
 	}
 
 	@Override
 	public BlockPos[] positions(BlockPos base, int strength) {
 		return new BlockPos[] {base.add(new Vec3i(RAND.nextInt(14) - 7, 0, RAND.nextInt(14) - 7))};
+	}
+
+	@Override
+	public double power(IWorld world, BlockPos pos) {
+		if (world.getLevelProperties().isThundering()) {
+			return 15.0;
+		}
+
+		return 3.0;
 	}
 
 	// "channelling power"

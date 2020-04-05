@@ -1,6 +1,5 @@
 package modfest.teamgreen.world.crimson;
 
-import modfest.teamgreen.world.CrimsonBiomeFeatures;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
@@ -26,5 +25,10 @@ public class CrimsonMarshlandBiome extends CrimsonBaseBiome {
 		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, CrimsonBiomeFeatures.CRIMSON_THORN_FEATURE.createDecoratedFeature(
 				Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(2))));
 		DefaultBiomeFeatures.addTaigaGrass(this);
+	}
+
+	@Override
+	public float modifyFogDistanceChunks(float originalDistanceChunks) {
+		return 3.8f;
 	}
 }

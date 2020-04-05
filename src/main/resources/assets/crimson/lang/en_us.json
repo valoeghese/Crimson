@@ -27,5 +27,7 @@
   "biome.crimson.crimson_forest": "Crimson Forest",
   "biome.crimson.crimson_brushland": "Crimson Brushland",
   "biome.crimson.crimson_marshland": "Crimson Marshland",
-  "biome.crimson.crimson_river": "Crimson River"
+  "biome.crimson.crimson_river": "Crimson River",
+  
+  "itemGroup.crimson.group": "Crimson"
 }

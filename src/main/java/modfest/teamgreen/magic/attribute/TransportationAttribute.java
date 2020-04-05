@@ -7,6 +7,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.IWorld;
 
@@ -90,4 +91,10 @@ public class TransportationAttribute extends Attribute {
 	}
 
 	private static final Morpheme MORPHEME = new Morpheme("asaro", "asai", "esei", false);
+
+	@Override
+	public double power(IWorld world, BlockPos pos) {
+		double result = pos.getSquaredDistance(Vec3i.ZERO) / 1024.0;
+		return result > 1.0 ? 15.0 : 15.0 * result;
+	}
 }

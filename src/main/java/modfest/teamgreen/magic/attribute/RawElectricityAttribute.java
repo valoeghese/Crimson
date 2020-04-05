@@ -3,6 +3,7 @@ package modfest.teamgreen.magic.attribute;
 import modfest.teamgreen.magic.MagicUser;
 import modfest.teamgreen.magic.language.Morpheme;
 import net.minecraft.entity.LightningEntity;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -32,6 +33,7 @@ public class RawElectricityAttribute extends Attribute {
 			}
 			return 15;
 		} else {
+			spawnParticle(world, ParticleTypes.SMOKE, 3, 0.5, pos, 0.0, 0.2, 0.0);
 			return 0;
 		}
 	}
@@ -58,18 +60,17 @@ public class RawElectricityAttribute extends Attribute {
 				// consume more "power" to do lightning
 				return (previous - 2) <= 0 ? 0 : previous - 2;
 			}
-		} else {
-			if (previous > 7) {
-				BlockPos[] positions = modifier.positions(pos, previous);
+		} else if (previous > 7) {
+			BlockPos[] positions = modifier.positions(pos, previous);
 
-				for (BlockPos pos1 : positions) {
-					summonLightning(world, pos1, true);
-				}
-
-				// consume more "power" to do lightning
-				return previous - 2;
+			for (BlockPos pos1 : positions) {
+				summonLightning(world, pos1, true);
 			}
 
+			// consume more "power" to do lightning
+			return previous - 2;
+		} else {
+			spawnParticle(world, ParticleTypes.SMOKE, 3, 0.5, pos, 0.0, 0.2, 0.0);
 			return previous == 0 ? 0 : previous - 1;
 		}
 	}
@@ -82,6 +83,16 @@ public class RawElectricityAttribute extends Attribute {
 		else if (result.getY() > 255) result = new BlockPos(result.getX(), 255, result.getZ());
 
 		return new BlockPos[] {result};
+	}
+
+	@Override
+	public double power(IWorld world, BlockPos pos) {
+		if (world.getLevelProperties().isThundering()) {
+			return 15.0;
+		}
+
+		double result = RAND.nextDouble() * 16.0;
+		return result > 15 ? 15 : result;
 	}
 
 	// "lightning" / "thunderstorm"

@@ -3,13 +3,15 @@ package modfest.teamgreen.magic.attribute;
 import modfest.teamgreen.magic.MagicUser;
 import modfest.teamgreen.magic.language.Morpheme;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.IWorld;
 
-public class AeroAttribute extends Attribute {
-	public AeroAttribute(Identifier id) {
+public class StrengthAttribute extends Attribute {
+	public StrengthAttribute(Identifier id) {
 		super(id, MORPHEME);
 	}
 
@@ -27,32 +29,22 @@ public class AeroAttribute extends Attribute {
 	@Override
 	public int activate(IWorld world, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
 		pos = usagePosIfNull(user, pos);
-		final BlockPos pos0 = pos;
-
-		world.getEntities(LivingEntity.class, new Box(pos).expand(1.0), le -> true).forEach(le -> le.addVelocity(0.0, 0.7 * modifier.power(world, pos0), 0.0));
-
-		return strength(pos.getY());
+		world.getEntities(LivingEntity.class, new Box(pos).expand(1.0), le -> true).forEach(le -> le.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20)));
+		return 15;
 	}
 
 	@Override
 	public int process(IWorld world, int previous, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
 		pos = usagePosIfNull(user, pos);
-		final BlockPos pos0 = pos;
-
-		world.getEntities(LivingEntity.class, new Box(pos).expand(previous == 0 ? 0.5 : previous + 0.5), le -> true).forEach(le -> le.addVelocity(0.0, 0.7 * modifier.power(world, pos0), 0.0));
-
-		return strength(pos.getY());
+		double m = modifier.power(world, pos);
+		world.getEntities(LivingEntity.class, new Box(pos).expand(1.0), le -> true).forEach(le -> le.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, (int) (m < 2 ? 20 : 10 * m))));
+		return 15;
 	}
 
 	@Override
 	public double power(IWorld world, BlockPos pos) {
-		return strength(pos.getY());
+		return 15.0;
 	}
 
-	private static int strength(int y) {
-		double result = (int) ((y / 256.0) * 16);
-		return result > 15.0 ? 15 : (int) result;
-	}
-
-	public static final Morpheme MORPHEME = new Morpheme("hine", "hi", "hi", true);
+	public static final Morpheme MORPHEME = new Morpheme("nakha", "nao", "ne", true);
 }

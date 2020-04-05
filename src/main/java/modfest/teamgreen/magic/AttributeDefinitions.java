@@ -9,6 +9,7 @@ import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ChannelledElectricityAttribute;
 import modfest.teamgreen.magic.attribute.FlameAttribute;
 import modfest.teamgreen.magic.attribute.RawElectricityAttribute;
+import modfest.teamgreen.magic.attribute.StrengthAttribute;
 import modfest.teamgreen.magic.attribute.TestAttribute;
 import modfest.teamgreen.magic.attribute.TransportationAttribute;
 import net.minecraft.item.Item;
@@ -34,6 +35,7 @@ public class AttributeDefinitions {
 	public static final Attribute TRANSPORTATION = new TransportationAttribute(CrimsonInit.from("transportation"));
 	public static final Attribute FLAME = new FlameAttribute(CrimsonInit.from("flame"));
 	public static final Attribute AERO = new AeroAttribute(CrimsonInit.from("aero"));
+	public static final Attribute STRENGTH = new StrengthAttribute(CrimsonInit.from("strength"));
 
 	public static Attribute ensureInit() {
 		return TEST;

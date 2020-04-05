@@ -2,9 +2,11 @@ package modfest.teamgreen.magic.attribute;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.IWorld;
 
 public interface ModifyingAttribute {
 	BlockPos[] positions(BlockPos base, int strength);
+	double power(IWorld world, BlockPos pos);
 
 	static ModifyingAttribute DEFAULT = new Default() {};
 
@@ -12,6 +14,11 @@ public interface ModifyingAttribute {
 		@Override
 		default BlockPos[] positions(BlockPos base, int strength) {
 			return new BlockPos[] {base};
+		}
+
+		@Override
+		default double power(IWorld world, BlockPos pos) {
+			return 1.0;
 		}
 	}
 
@@ -50,6 +57,11 @@ public interface ModifyingAttribute {
 			}
 		}
 
+		@Override
+		public double power(IWorld world, BlockPos pos) {
+			return average(this.ma0.power(world, pos), this.ma1.power(world, pos));
+		}
+
 		private static BlockPos[] mix(BlockPos[] arr, BlockPos pos) {
 			final int len = arr.length;
 			BlockPos[] result = new BlockPos[len];
@@ -64,6 +76,10 @@ public interface ModifyingAttribute {
 
 		private static int average(int a, int b) {
 			return (a + b) / 2;
+		}
+
+		private static double average(double a, double b) {
+			return (a + b) / 2.0;
 		}
 
 		public static String getConnectiveMorpheme(Compound ma) {

@@ -1,4 +1,4 @@
-package modfest.teamgreen.world;
+package modfest.teamgreen.world.crimson;
 
 import com.google.common.collect.ImmutableList;
 
@@ -62,6 +62,13 @@ public class CrimsonBiomeFeatures {
 	public static final ConfiguredFeature<RandomPatchFeatureConfig, ?> CRIMSON_THORN_FEATURE = Feature.RANDOM_PATCH.configure(
 			new RandomPatchFeatureConfig.Builder(
 					new SimpleBlockStateProvider(ModBlocks.CRIMSON_THORN.get().getDefaultState()),
+					new SimpleBlockPlacer())
+			.tries(16)
+			.build());
+
+	public static final ConfiguredFeature<RandomPatchFeatureConfig, ?> CRIMSON_TENDRILS_FEATURE = Feature.RANDOM_PATCH.configure(
+			new RandomPatchFeatureConfig.Builder(
+					new SimpleBlockStateProvider(ModBlocks.CRIMSON_TENDRILS.get().getDefaultState()),
 					new SimpleBlockPlacer())
 			.tries(16)
 			.build());

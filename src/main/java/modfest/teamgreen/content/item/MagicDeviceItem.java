@@ -6,6 +6,8 @@ import modfest.teamgreen.logic.MagicDeviceItemstack;
 import modfest.teamgreen.magic.MagicInteraction;
 import modfest.teamgreen.magic.MagicUser;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
@@ -13,6 +15,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
 public class MagicDeviceItem extends Item {
@@ -29,13 +32,31 @@ public class MagicDeviceItem extends Item {
 			MagicInteraction interaction = data.getInteraction();
 
 			if (interaction != null) {
-				int i = Math.max(1, interaction.apply(context.getWorld(), new MagicUser(context.getPlayer()), context.getBlockPos()) / 2);
+				int i = (int) Math.max(1, interaction.apply(context.getWorld(), new MagicUser(context.getPlayer()), context.getBlockPos()) / 2.5);
 				context.getStack().damage(i, context.getPlayer(), p -> p.sendToolBreakStatus(context.getHand()));
 				return ActionResult.SUCCESS;
 			}
 		}
 
 		return ActionResult.PASS;
+	}
+
+	@Override
+	public boolean useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
+		Object stack0 = stack;
+
+		if (stack0 instanceof MagicDeviceItemstack) {
+			MagicDeviceData data = ((MagicDeviceItemstack) stack0).getData();
+			MagicInteraction interaction = data.getInteraction();
+
+			if (interaction != null) {
+				int i = (int) Math.max(1, interaction.apply(user.world, new MagicUser(user), entity.getBlockPos()) / 2.5);
+				stack.damage(i, user, p -> p.sendToolBreakStatus(hand));
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	@Override

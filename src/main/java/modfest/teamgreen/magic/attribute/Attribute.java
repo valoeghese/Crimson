@@ -10,6 +10,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import modfest.teamgreen.magic.MagicUser;
 import modfest.teamgreen.magic.language.Morpheme;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -92,6 +93,15 @@ public abstract class Attribute implements ModifyingAttribute {
 			return user.blockPos();
 		}
 		return pos;
+	}
+
+	protected static void spawnParticle(IWorld world, ParticleEffect type, int count, double spread, BlockPos pos, double vx, double vy, double vz) {
+		for (int i = 0; i < count; ++i) {
+			double px = pos.getX() + RAND.nextDouble() * spread * 2 - spread;
+			double py = pos.getY() + RAND.nextDouble() * spread * 2 - spread;
+			double pz = pos.getZ() + RAND.nextDouble() * spread * 2 - spread;
+			world.addParticle(type, px, py, pz, vx, vy, vz);
+		}
 	}
 
 	private static int currentSaveId = 0;

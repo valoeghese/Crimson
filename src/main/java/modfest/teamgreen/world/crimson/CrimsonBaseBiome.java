@@ -3,9 +3,14 @@ package modfest.teamgreen.world.crimson;
 import modfest.teamgreen.world.BiomeFog;
 import modfest.teamgreen.world.DefaultedBiome;
 import modfest.teamgreen.world.ModWorld;
+import net.minecraft.entity.EntityCategory;
+import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.CountDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.MineshaftFeature;
@@ -31,6 +36,22 @@ public abstract class CrimsonBaseBiome extends DefaultedBiome implements BiomeFo
 		DefaultBiomeFeatures.addDefaultOres(this);
 		DefaultBiomeFeatures.addDefaultDisks(this);
 		DefaultBiomeFeatures.addSprings(this);
+
+		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, CrimsonBiomeFeatures.CRIMSON_TENDRILS_FEATURE.createDecoratedFeature(
+				Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(1))));
+
+		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.CHICKEN, 3, 1, 1));
+		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.RABBIT, 10, 1, 2));
+
+		this.addSpawn(EntityCategory.AMBIENT, new SpawnEntry(EntityType.BAT, 10, 8, 8));
+
+		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.SPIDER, 250, 4, 4));
+		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.ZOMBIE, 95, 4, 4));
+		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
+		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.SKELETON, 100, 4, 4));
+		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.SLIME, 100, 4, 4));
+		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.ENDERMAN, 12, 1, 4));
+		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.WITCH, 5, 1, 1));
 	}
 
 	@Override
@@ -51,6 +72,11 @@ public abstract class CrimsonBaseBiome extends DefaultedBiome implements BiomeFo
 	@Override
 	public float modifyFogDistanceChunks(float originalDistanceChunks) {
 		return 4.3f;
+	}
+
+	@Override
+	public float getMaxSpawnLimit() {
+		return 0.03f;
 	}
 
 	@Override

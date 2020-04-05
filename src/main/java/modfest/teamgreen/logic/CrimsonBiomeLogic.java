@@ -10,7 +10,7 @@ import net.minecraft.world.biome.Biome;
 
 public class CrimsonBiomeLogic {
 	public CrimsonBiomeLogic(Random rand) {
-		this.alterationNoise = new OctaveOpenSimplexNoise(rand, 1, 400.0);
+		this.alterationNoise = new OctaveOpenSimplexNoise(rand, 1, 80.0);
 
 		final double target = 50 * 50;
 
@@ -35,7 +35,7 @@ public class CrimsonBiomeLogic {
 	public void apply(Biome result, int genX, int genZ, Consumer<Biome> setReturnValue) {
 		double threshold = this.thresholdCache.apply(genX, genZ);
 
-		if (threshold > 0.16f) {
+		if (threshold > 0.19f) {
 			switch (result.getCategory()) {
 			case MUSHROOM:
 			case OCEAN:

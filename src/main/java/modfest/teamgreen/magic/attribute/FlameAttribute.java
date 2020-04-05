@@ -72,4 +72,9 @@ public class FlameAttribute extends Attribute {
 	}
 
 	private static final Morpheme MORPHEME = new Morpheme("shakha", "sha", "she", false);
+
+	@Override
+	public double power(IWorld world, BlockPos pos) {
+		return world.getLightLevel(pos);
+	}
 }

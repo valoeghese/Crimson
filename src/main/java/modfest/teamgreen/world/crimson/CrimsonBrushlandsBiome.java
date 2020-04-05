@@ -1,6 +1,5 @@
 package modfest.teamgreen.world.crimson;
 
-import modfest.teamgreen.world.CrimsonBiomeFeatures;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;

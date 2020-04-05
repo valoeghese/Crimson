@@ -22,7 +22,8 @@ public enum ModItems {
 	IMBUED_REALGAR("imbued_realgar", CrimsonIngredientItem::new, new CrimsonIngredientItem.Settings().attribute(AttributeDefinitions.FLAME)),
 	IMBUED_CELESTINE("imbued_celestine", CrimsonIngredientItem::new, new CrimsonIngredientItem.Settings().attribute(AttributeDefinitions.TRANSPORTATION)),
 	IMBUED_CUT_LAZULITE("imbued_cut_lazulite", CrimsonIngredientItem::new, new CrimsonIngredientItem.Settings().attribute(AttributeDefinitions.CHANNELLED_ELECTRICITY)),
-	IMBUED_DIAMOND("imbued_diamond", CrimsonIngredientItem::new, new CrimsonIngredientItem.Settings().attribute(AttributeDefinitions.AERO));
+	IMBUED_DIAMOND("imbued_diamond", CrimsonIngredientItem::new, new CrimsonIngredientItem.Settings().attribute(AttributeDefinitions.AERO)),
+	IMBUED_VANADINITE("imbued_vanadinite", CrimsonIngredientItem::new, new CrimsonIngredientItem.Settings().attribute(AttributeDefinitions.STRENGTH));
 
 	private <T extends Item.Settings> ModItems(String id, Function<T, Item> constructor, T settings) {
 		this.item = Registry.register(Registry.ITEM, CrimsonInit.from(id), constructor.apply((T) settings.group(CrimsonInit.GROUP)));

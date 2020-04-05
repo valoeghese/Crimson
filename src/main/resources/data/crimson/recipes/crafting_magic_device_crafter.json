@@ -6,7 +6,7 @@
     ],
     "key": {
         "c": {
-            "item": "crimson:copper_ingot"
+            "tag": "c:copper_ingots"
         },
         "C": {
             "item": "crimson:crimson_essence"

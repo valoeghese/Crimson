@@ -4,12 +4,14 @@ import modfest.teamgreen.content.block.ModBlocks;
 import modfest.teamgreen.content.item.ModItems;
 import modfest.teamgreen.crafting.gui.MagicDeviceCraftingController;
 import modfest.teamgreen.magic.AttributeDefinitions;
+import modfest.teamgreen.mixin.AccessorBrewingRecipeRegistry;
 import modfest.teamgreen.world.ModWorld;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.Feature;
@@ -23,6 +25,7 @@ public class CrimsonInit implements ModInitializer {
 	public void onInitialize() {
 		// access CONFIG.exampleField etc
 		registerAll();
+		AccessorBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, ModItems.REALGAR.get(), Potions.POISON);
 	}
 
 	private void registerAll() {
