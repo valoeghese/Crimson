@@ -27,6 +27,10 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 		for (int x = 0; x < 4; ++x) {
 			for (int y = 0; y < 3; ++y) {
 				WItemSlot inputSlot = WItemSlot.of(this.blockInventory, 3 * x + y);
+				
+				if (y != 1) {
+					inputSlot.setBackgroundPainter(new ModifierBackgroundPainter(y == 0));
+				}
 				root.add(inputSlot, x, y);
 			}
 		}
