@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "crimson:block/crimson_log"
+    "all": "crimson:block/crimson_log_side"
   }
 }
