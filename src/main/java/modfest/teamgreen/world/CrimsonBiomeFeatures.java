@@ -2,7 +2,7 @@ package modfest.teamgreen.world;
 
 import com.google.common.collect.ImmutableList;
 
-import modfest.teamgreen.block.ModBlocks;
+import modfest.teamgreen.content.block.ModBlocks;
 import net.minecraft.world.gen.decorator.LeaveVineTreeDecorator;
 import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -32,19 +32,19 @@ public class CrimsonBiomeFeatures {
 			new BranchedTreeFeatureConfig.Builder(
 					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LOG.get().getDefaultState()),
 					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LEAVES.get().getDefaultState()),
-					new BlobFoliagePlacer(2, 3))
+					new BlobFoliagePlacer(1, 0))
 			.baseHeight(14)
-			.heightRandA(3)
-			.heightRandB(4)
-			.foliageHeight(2)
+			.heightRandA(4)
+			.foliageHeight(1 )
 			.trunkHeight(12)
+			.noVines()
 			.build());
 
 	public static final ConfiguredFeature<BranchedTreeFeatureConfig, ?> CRIMSON_VINE_TREE_FEATURE = Feature.NORMAL_TREE.configure(
 			new BranchedTreeFeatureConfig.Builder(
 					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LOG.get().getDefaultState()),
 					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LEAVES.get().getDefaultState()),
-					new BlobFoliagePlacer(4, 1))
+					new BlobFoliagePlacer(3, 1))
 			.baseHeight(4)
 			.heightRandA(3)
 			.foliageHeight(3)

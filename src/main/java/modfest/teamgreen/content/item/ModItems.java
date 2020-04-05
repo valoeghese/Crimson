@@ -1,4 +1,4 @@
-package modfest.teamgreen.item;
+package modfest.teamgreen.content.item;
 
 import java.util.function.Function;
 
@@ -15,7 +15,8 @@ public enum ModItems {
 	VANADINITE("vanadinite", Item::new, new Item.Settings()),
 	CELESTINE("celestine", Item::new, new Item.Settings()),
 	COPPER_INGOT("copper_ingot", Item::new, new Item.Settings()),
-	CUT_LAZULITE("cut_lazulite", Item::new, new Item.Settings());
+	CUT_LAZULITE("cut_lazulite", Item::new, new Item.Settings()),
+	CRIMSON_ESSENCE("crimson_essence", Item::new, new Item.Settings());
 
 	private <T extends Item.Settings> ModItems(String id, Function<T, Item> constructor, T settings) {
 		this.item = Registry.register(Registry.ITEM, CrimsonInit.from(id), constructor.apply((T) settings.group(CrimsonInit.GROUP)));

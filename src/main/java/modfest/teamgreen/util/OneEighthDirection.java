@@ -21,15 +21,15 @@ public enum OneEighthDirection {
 	private final Vec3d vec;
 
 	public static Stream<Vec3d> stream() {
-		return Stream.<Vec3d>builder()
-				.add(NORTH.vec)
-				.add(NORTHEAST.vec)
-				.add(EAST.vec)
-				.add(SOUTHEAST.vec)
-				.add(SOUTH.vec)
-				.add(SOUTHWEST.vec)
-				.add(WEST.vec)
-				.add(NORTHWEST.vec)
-				.build();
+		return Stream.of(
+				NORTH.vec,
+				NORTHEAST.vec,
+				EAST.vec,
+				SOUTHEAST.vec,
+				SOUTH.vec,
+				SOUTHWEST.vec,
+				WEST.vec,
+				NORTHWEST.vec
+				);
 	}
 }

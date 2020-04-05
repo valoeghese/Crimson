@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import modfest.teamgreen.item.MagicDeviceItem;
-import modfest.teamgreen.item.MagicDeviceItem.MagicDeviceData;
+import modfest.teamgreen.content.item.MagicDeviceItem;
+import modfest.teamgreen.content.item.MagicDeviceItem.MagicDeviceData;
 import modfest.teamgreen.logic.MagicDeviceItemstack;
 import modfest.teamgreen.magic.MagicInteraction;
 import net.minecraft.item.Item;

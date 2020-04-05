@@ -1,7 +1,7 @@
 package modfest.teamgreen;
 
-import modfest.teamgreen.block.ModBlocks;
-import modfest.teamgreen.gui.MagicDeviceCraftingController;
+import modfest.teamgreen.content.block.ModBlocks;
+import modfest.teamgreen.crafting.gui.MagicDeviceCraftingController;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.screen.ScreenProviderRegistry;

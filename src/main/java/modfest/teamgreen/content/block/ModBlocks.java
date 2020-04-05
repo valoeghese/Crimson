@@ -1,10 +1,10 @@
-package modfest.teamgreen.block;
+package modfest.teamgreen.content.block;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import modfest.teamgreen.CrimsonInit;
-import modfest.teamgreen.block.ModOreBlock.OreProperties;
+import modfest.teamgreen.content.block.ModOreBlock.OreProperties;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tools.FabricToolTags;
 import net.minecraft.block.Block;

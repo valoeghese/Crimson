@@ -1,4 +1,4 @@
-package modfest.teamgreen.gui;
+package modfest.teamgreen.crafting.gui;
 
 import io.github.cottonmc.cotton.gui.CottonCraftingController;
 import io.github.cottonmc.cotton.gui.client.CottonInventoryScreen;

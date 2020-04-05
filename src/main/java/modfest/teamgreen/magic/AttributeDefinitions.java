@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import modfest.teamgreen.CrimsonInit;
-import modfest.teamgreen.item.ModItems;
+import modfest.teamgreen.content.item.ModItems;
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ChannelledElectricityAttribute;
 import modfest.teamgreen.magic.attribute.FlameAttribute;

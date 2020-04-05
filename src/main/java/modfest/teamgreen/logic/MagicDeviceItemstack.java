@@ -1,6 +1,6 @@
 package modfest.teamgreen.logic;
 
-import modfest.teamgreen.item.MagicDeviceItem;
+import modfest.teamgreen.content.item.MagicDeviceItem;
 import modfest.teamgreen.magic.MagicInteraction;
 
 public interface MagicDeviceItemstack {

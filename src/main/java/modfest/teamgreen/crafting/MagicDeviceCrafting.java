@@ -3,7 +3,7 @@ package modfest.teamgreen.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
-import modfest.teamgreen.item.ModItems;
+import modfest.teamgreen.content.item.ModItems;
 import modfest.teamgreen.logic.MagicDeviceItemstack;
 import modfest.teamgreen.magic.AttributeDefinitions;
 import modfest.teamgreen.magic.MagicInteraction;

@@ -1,4 +1,4 @@
-package modfest.teamgreen.block;
+package modfest.teamgreen.content.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

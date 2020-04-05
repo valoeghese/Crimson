@@ -3,7 +3,7 @@ package modfest.teamgreen.world;
 import java.util.function.Predicate;
 
 import modfest.teamgreen.CrimsonInit;
-import modfest.teamgreen.block.ModBlocks;
+import modfest.teamgreen.content.block.ModBlocks;
 import modfest.teamgreen.world.crimson.CrimsonBrushlandsBiome;
 import modfest.teamgreen.world.crimson.CrimsonForestBiome;
 import modfest.teamgreen.world.crimson.CrimsonMarshlandBiome;

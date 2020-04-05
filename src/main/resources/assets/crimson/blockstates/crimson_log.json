@@ -1,7 +1,7 @@
 {
-  "variants": {
-    "": {
-      "model": "crimson:block/crimson_log"
+    "variants": {
+        "axis=y":  { "model": "crimson:block/crimson_log" },
+        "axis=z":   { "model": "crimson:block/crimson_log", "x": 90 },
+        "axis=x":   { "model": "crimson:block/crimson_log", "x": 90, "y": 90 }
     }
-  }
 }

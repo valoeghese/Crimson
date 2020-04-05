@@ -1,7 +1,6 @@
-package modfest.teamgreen.block;
+package modfest.teamgreen.content.block;
 
 import net.minecraft.block.SaplingBlock;
-import net.minecraft.block.sapling.SaplingGenerator;
 
 public class CrimsonSaplingBlock extends SaplingBlock {
     protected CrimsonSaplingBlock(Settings settings) {

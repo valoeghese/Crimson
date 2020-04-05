@@ -1,4 +1,4 @@
-package modfest.teamgreen.block;
+package modfest.teamgreen.content.block;
 
 import java.util.Random;
 

@@ -1,6 +1,6 @@
-package modfest.teamgreen.block;
+package modfest.teamgreen.content.block;
 
-import modfest.teamgreen.gui.MagicDeviceCraftingController;
+import modfest.teamgreen.crafting.gui.MagicDeviceCraftingController;
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

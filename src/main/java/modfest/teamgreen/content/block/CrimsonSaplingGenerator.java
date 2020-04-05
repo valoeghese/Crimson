@@ -1,15 +1,11 @@
-package modfest.teamgreen.block;
+package modfest.teamgreen.content.block;
+
+import java.util.Random;
 
 import modfest.teamgreen.world.CrimsonBiomeFeatures;
 import net.minecraft.block.sapling.SaplingGenerator;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.foliage.AcaciaFoliagePlacer;
-import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
-
-import java.util.Random;
 
 public class CrimsonSaplingGenerator extends SaplingGenerator {
     @Override

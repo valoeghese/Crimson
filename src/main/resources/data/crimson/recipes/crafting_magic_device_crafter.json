@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "cCc",
+        " H "
+    ],
+    "key": {
+        "c": {
+            "item": "crimson:copper_ingot"
+        },
+        "C": {
+            "item": "crimson:celestine"
+        },
+        "H": {
+            "item": "crimson:crimson_log"
+        }
+    },
+    "result": {
+        "item": "crimson:magic_device_crafter",
+        "count": 1
+    }
+}

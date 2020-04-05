@@ -1,4 +1,4 @@
-package modfest.teamgreen.item;
+package modfest.teamgreen.content.item;
 
 import java.util.List;
 

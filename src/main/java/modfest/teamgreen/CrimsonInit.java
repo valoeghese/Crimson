@@ -1,8 +1,8 @@
 package modfest.teamgreen;
 
-import modfest.teamgreen.block.ModBlocks;
-import modfest.teamgreen.gui.MagicDeviceCraftingController;
-import modfest.teamgreen.item.ModItems;
+import modfest.teamgreen.content.block.ModBlocks;
+import modfest.teamgreen.content.item.ModItems;
+import modfest.teamgreen.crafting.gui.MagicDeviceCraftingController;
 import modfest.teamgreen.magic.AttributeDefinitions;
 import modfest.teamgreen.world.ModWorld;
 import net.fabricmc.api.ModInitializer;
