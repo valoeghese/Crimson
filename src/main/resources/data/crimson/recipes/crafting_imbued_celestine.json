@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "crimson:celestine"
+        },
+        {
+            "item": "crimson:crimson_essence"
+        }
+    ],
+    "result": {
+        "item": "crimson:imbued_celestine",
+        "count": 1
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "crimson:realgar"
+        },
+        {
+            "item": "crimson:realgar"
+        },
+        {
+            "item": "crimson:crimson_thorn"
+        },
+        {
+            "item": "crimson:lazulite"
+        },
+        {
+            "item": "crimson:lazulite"
+        }
+    ],
+    "result": {
+        "item": "crimson:crimson_essence",
+        "count": 1
+    }
+}

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import modfest.teamgreen.CrimsonInit;
-import modfest.teamgreen.content.item.ModItems;
+import modfest.teamgreen.magic.attribute.AeroAttribute;
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ChannelledElectricityAttribute;
 import modfest.teamgreen.magic.attribute.FlameAttribute;
@@ -33,15 +33,9 @@ public class AttributeDefinitions {
 	public static final Attribute CHANNELLED_ELECTRICITY = new ChannelledElectricityAttribute(CrimsonInit.from("channelled_electricity"));
 	public static final Attribute TRANSPORTATION = new TransportationAttribute(CrimsonInit.from("transportation"));
 	public static final Attribute FLAME = new FlameAttribute(CrimsonInit.from("flame"));
+	public static final Attribute AERO = new AeroAttribute(CrimsonInit.from("aero"));
 
 	public static Attribute ensureInit() {
 		return TEST;
-	}
-
-	static {
-		ATTRIBUTE_MAP.put(ModItems.LAZULITE.get(), BIRI_BIRI);
-		ATTRIBUTE_MAP.put(ModItems.CUT_LAZULITE.get(), CHANNELLED_ELECTRICITY);
-		ATTRIBUTE_MAP.put(ModItems.CELESTINE.get(), TRANSPORTATION);
-		ATTRIBUTE_MAP.put(ModItems.REALGAR.get(), FLAME);
 	}
 }

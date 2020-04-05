@@ -67,7 +67,7 @@ public class MagicInteraction {
 		return this.magicName;
 	}
 
-	public void apply(IWorld world, MagicUser user, @Nullable BlockPos pos) {
+	public int apply(IWorld world, MagicUser user, @Nullable BlockPos pos) {
 		int currentValue = -1; // -1 represents not started
 
 		for (ConfiguredAttribute attribute : this.components) {
@@ -77,6 +77,8 @@ public class MagicInteraction {
 				currentValue = attribute.process(world, currentValue, user, pos);
 			}
 		}
+
+		return currentValue;
 	}
 
 	public int[] serialise() {

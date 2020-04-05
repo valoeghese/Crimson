@@ -2,10 +2,11 @@
   "item.crimson.celestine": "Celestine",
   "item.crimson.copper_ingot": "Copper Ingot",
   "item.crimson.cut_lazulite": "Cut Lazulite",
-  "item.crimson.lazulite": "Celestine",
+  "item.crimson.lazulite": "Lazulite",
   "item.crimson.magic_device": "Magic Device",
   "item.crimson.realgar": "Realgar",
   "item.crimson.vanadinite": "Vanadinite",
+  "item.crimson.crimson_essence": "Crimson Essence",
   
   "block.crimson.bornite": "Bornite",
   "block.crimson.celestine_ore": "Celestine Ore",
@@ -14,6 +15,9 @@
   "block.crimson.realgar_ore": "Realgar Ore",
   "block.crimson.vanadinite_ore": "Vanadinite Ore",
   "block.crimson.crimson_thorn": "Crimson Thorn",
+  "block.crimson.crimson_log": "Crimson Log",
+  "block.crimson.crimson_leaves": "Crimson Leaves",
+  "block.crimson.crimson_sapling": "Crimson Sapling",
   
   "biome.crimson.crimson_forest": "Crimson Forest",
   "biome.crimson.crimson_brushland": "Crimson Brushland",
