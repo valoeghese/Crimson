@@ -33,7 +33,7 @@ public class RawElectricityAttribute extends Attribute {
 			}
 			return 15;
 		} else {
-			spawnParticles(world, ParticleTypes.SMOKE, 15, pos, 0.0, 0.1, 0.0, 0.02);
+			spawnParticles(world, ParticleTypes.SMOKE, 15, pos, 0.0, 0.0, 0.0, 0.25);
 			return 0;
 		}
 	}
