@@ -6,7 +6,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.IWorld;
@@ -20,8 +19,10 @@ public class TransportationAttribute extends Attribute {
 	public int activate(IWorld world, MagicUser user, BlockPos pos, ModifyingAttribute modifier) {
 		pos = usagePosIfNull(user, pos);
 		BlockPos[] positions = modifier.positions(pos, 1);
-		teleport(world, user, positions[RAND.nextInt(positions.length)], 1);
-		return 0;
+		BlockPos dest = positions[RAND.nextInt(positions.length)];
+		teleport(world, user, dest, 1);
+		int result = telePower(user.blockPos(), dest);
+		return result > 15 ? 15 : result;
 	}
 
 	@Override
@@ -49,8 +50,11 @@ public class TransportationAttribute extends Attribute {
 		}
 
 		BlockPos[] positions = modifier.positions(pos, previous);
-		teleport(world, user, positions[RAND.nextInt(positions.length)], previous);
-		return MathHelper.floor(previous / 2.0);
+		BlockPos dest = positions[RAND.nextInt(positions.length)];
+		teleport(world, user, dest, previous);
+
+		int result = telePower(user.blockPos(), dest);
+		return result > 15 ? 15 : result;
 	}
 
 	@Override
@@ -77,6 +81,12 @@ public class TransportationAttribute extends Attribute {
 		return new BlockPos[] {base.add(direction.getOffsetX() * 12 * strength, 0, direction.getOffsetZ() * 12 * strength)};
 	}
 
+	@Override
+	public double power(IWorld world, BlockPos pos) {
+		double result = pos.getSquaredDistance(Vec3i.ZERO) / 1048576.0;
+		return result > 1.0 ? 15.0 : 15.0 * result;
+	}
+
 	private static void teleport(IWorld world, MagicUser user, BlockPos pos, int strength) {
 		if (user.type() == MagicUser.Type.PLAYER) {
 			world.getChunk(pos).getBlockState(pos);
@@ -90,11 +100,9 @@ public class TransportationAttribute extends Attribute {
 		}
 	}
 
-	private static final Morpheme MORPHEME = new Morpheme("asaro", "asai", "esei", false);
-
-	@Override
-	public double power(IWorld world, BlockPos pos) {
-		double result = pos.getSquaredDistance(Vec3i.ZERO) / 1024.0;
-		return result > 1.0 ? 15.0 : 15.0 * result;
+	private static int telePower(BlockPos original, BlockPos result) {
+		return (int) (15.0 * (double) original.getSquaredDistance(result) / 1048576.0);
 	}
+
+	private static final Morpheme MORPHEME = new Morpheme("asaro", "asai", "esei", false);
 }

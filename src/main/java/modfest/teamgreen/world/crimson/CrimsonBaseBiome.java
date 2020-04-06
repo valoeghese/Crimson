@@ -1,5 +1,7 @@
 package modfest.teamgreen.world.crimson;
 
+import modfest.teamgreen.CrimsonConfig.BiomeGen;
+import modfest.teamgreen.CrimsonInit;
 import modfest.teamgreen.world.BiomeFog;
 import modfest.teamgreen.world.DefaultedBiome;
 import modfest.teamgreen.world.ModWorld;
@@ -18,10 +20,12 @@ import net.minecraft.world.gen.feature.MineshaftFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 public abstract class CrimsonBaseBiome extends DefaultedBiome implements BiomeFog {
-	public CrimsonBaseBiome(Properties properties) {
+	public CrimsonBaseBiome(BiomeGen biomeGen, Properties properties) {
 		super(properties, new SettingDefaults()
 				.precipitation(Biome.Precipitation.NONE)
 				.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, ModWorld.CRIMSON_SURFACE_CONFIG)
+				.depth(biomeGen.depth)
+				.scale(biomeGen.scale)
 				.temperature(0.8f)
 				.downfall(0.1f)
 				.waterColor(0xd81406)
@@ -38,7 +42,12 @@ public abstract class CrimsonBaseBiome extends DefaultedBiome implements BiomeFo
 		DefaultBiomeFeatures.addSprings(this);
 
 		this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, CrimsonBiomeFeatures.CRIMSON_TENDRILS_FEATURE.createDecoratedFeature(
-				Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(1))));
+				Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(CrimsonInit.CONFIG.tendrilsGenCount))));
+
+		if (biomeGen.thornGenCount > 0) {
+			this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, CrimsonBiomeFeatures.CRIMSON_THORN_FEATURE.createDecoratedFeature(
+					Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(biomeGen.thornGenCount))));
+		}
 
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.CHICKEN, 3, 1, 1));
 		this.addSpawn(EntityCategory.CREATURE, new SpawnEntry(EntityType.RABBIT, 10, 1, 2));
@@ -52,7 +61,11 @@ public abstract class CrimsonBaseBiome extends DefaultedBiome implements BiomeFo
 		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.SLIME, 100, 4, 4));
 		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.ENDERMAN, 12, 1, 4));
 		this.addSpawn(EntityCategory.MONSTER, new SpawnEntry(EntityType.WITCH, 5, 1, 1));
+
+		this.fogDistanceChunks = biomeGen.fogDistanceChunks;
 	}
+
+	private final float fogDistanceChunks;
 
 	@Override
 	public int getGrassColorAt(double x, double z) {
@@ -70,13 +83,13 @@ public abstract class CrimsonBaseBiome extends DefaultedBiome implements BiomeFo
 	}
 
 	@Override
-	public float modifyFogDistanceChunks(float originalDistanceChunks) {
-		return 4.3f;
+	public float getMaxSpawnLimit() {
+		return 0.03f;
 	}
 
 	@Override
-	public float getMaxSpawnLimit() {
-		return 0.03f;
+	public float modifyFogDistanceChunks(float originalDistanceChunks) {
+		return this.fogDistanceChunks;
 	}
 
 	@Override

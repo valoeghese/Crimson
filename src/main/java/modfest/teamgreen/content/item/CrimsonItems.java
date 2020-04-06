@@ -9,8 +9,8 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
 @SuppressWarnings("unchecked")
-public enum ModItems {
-	MAGIC_DEVICE("magic_device", MagicDeviceItem::new, new Item.Settings().rarity(Rarity.EPIC).maxDamage(35)),
+public enum CrimsonItems {
+	MAGIC_DEVICE("magic_device", MagicDeviceItem::new, new Item.Settings().rarity(Rarity.EPIC).maxDamage(CrimsonInit.CONFIG.magicDeviceDurability)),
 	LAZULITE("lazulite", Item::new, new Item.Settings()),
 	REALGAR("realgar", Item::new, new Item.Settings()),
 	VANADINITE("vanadinite", Item::new, new Item.Settings()),
@@ -25,7 +25,7 @@ public enum ModItems {
 	IMBUED_DIAMOND("imbued_diamond", CrimsonIngredientItem::new, new CrimsonIngredientItem.Settings().attribute(AttributeDefinitions.AERO)),
 	IMBUED_VANADINITE("imbued_vanadinite", CrimsonIngredientItem::new, new CrimsonIngredientItem.Settings().attribute(AttributeDefinitions.STRENGTH));
 
-	private <T extends Item.Settings> ModItems(String id, Function<T, Item> constructor, T settings) {
+	private <T extends Item.Settings> CrimsonItems(String id, Function<T, Item> constructor, T settings) {
 		this.item = Registry.register(Registry.ITEM, CrimsonInit.from(id), constructor.apply((T) settings.group(CrimsonInit.GROUP)));
 	}
 
@@ -35,7 +35,7 @@ public enum ModItems {
 		return this.item;
 	}
 
-	public static ModItems ensureInit() {
+	public static CrimsonItems ensureInit() {
 		return MAGIC_DEVICE;
 	}
 }

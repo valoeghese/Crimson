@@ -18,16 +18,19 @@ import net.minecraft.util.Identifier;
 
 public class MagicDeviceCraftingController extends CottonCraftingController {
 	public MagicDeviceCraftingController(int syncId, PlayerInventory playerInventory) {
-		super(/*dummy*/RecipeType.SMELTING, syncId, playerInventory, new CraftingInventory(DefaultedList.ofSize(13 + 36, ItemStack.EMPTY)), new ArrayPropertyDelegate(0));
+		super(/*dummy*/RecipeType.SMELTING, syncId, playerInventory, new CraftingInventory(CrimsonInit.CONFIG.magicDeviceMaxSections * 3, DefaultedList.ofSize(CrimsonInit.CONFIG.magicDeviceMaxSections * 3 + 37, ItemStack.EMPTY)), new ArrayPropertyDelegate(0));
 
 		WGridPanel root = new WGridPanel();
 		this.setRootPanel(root);
 
+		int sections = CrimsonInit.CONFIG.magicDeviceMaxSections;
+		this.size = 3 * sections;
+
 		// input slots
-		for (int x = 0; x < 4; ++x) {
+		for (int x = 0; x < sections; ++x) {
 			for (int y = 0; y < 3; ++y) {
 				WItemSlot inputSlot = WItemSlot.of(this.blockInventory, 3 * x + y);
-				
+
 				if (y != 1) {
 					inputSlot.setBackgroundPainter(new ModifierBackgroundPainter(y == 0));
 				}
@@ -36,22 +39,24 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 		}
 
 		// output slots
-		WItemSlot outputSlot = WItemSlot.outputOf(this.blockInventory, 12);
-		root.add(outputSlot, 5, 1);
+		WItemSlot outputSlot = WItemSlot.outputOf(this.blockInventory, this.size);
+		root.add(outputSlot, sections + 1, 1);
 
 		root.add(createPlayerInventoryPanel(), 0, 4);
 
-		this.addListener(new MagicDeviceCrafting(playerInventory.player));
+		this.addListener(new MagicDeviceCrafting(playerInventory.player, sections));
 
 		root.validate(this);
 	}
+
+	private final int size;
 
 	@Override
 	public void close(PlayerEntity player) {
 		super.close(player);
 
 		// drop non empty stacks
-		for (int i = 0; i < 12; ++i) {
+		for (int i = 0; i < this.size; ++i) {
 			ItemStack stack = this.blockInventory.getInvStack(i);
 
 			if (!stack.isEmpty()) {
@@ -69,10 +74,12 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 	}
 
 	public static class CraftingInventory implements Inventory {
-		public CraftingInventory(DefaultedList<ItemStack> defaults) {
+		public CraftingInventory(int size, DefaultedList<ItemStack> defaults) {
+			this.size = size;
 			this.defaults = defaults;
 		}
 
+		private final int size;
 		private final DefaultedList<ItemStack> defaults;
 
 		/**
@@ -85,7 +92,7 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 		// insertion check
 		@Override
 		public boolean isValidInvStack(int slot, ItemStack stack) {
-			if (slot == 12) {
+			if (slot == this.size) {
 				return false;
 			}
 			return Inventory.super.isValidInvStack(slot, stack);

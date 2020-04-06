@@ -32,8 +32,7 @@ public class MagicDeviceItem extends Item {
 			MagicInteraction interaction = data.getInteraction();
 
 			if (interaction != null) {
-				int i = (int) Math.max(1, interaction.apply(context.getWorld(), new MagicUser(context.getPlayer()), context.getBlockPos()) / 2.5);
-				context.getStack().damage(i, context.getPlayer(), p -> p.sendToolBreakStatus(context.getHand()));
+				interaction.apply(context.getStack(), context.getWorld(), new MagicUser(context.getPlayer()), context.getBlockPos(), context.getHand());
 				return ActionResult.SUCCESS;
 			}
 		}
@@ -50,8 +49,7 @@ public class MagicDeviceItem extends Item {
 			MagicInteraction interaction = data.getInteraction();
 
 			if (interaction != null) {
-				int i = (int) Math.max(1, interaction.apply(user.world, new MagicUser(user), entity.getBlockPos()) / 2.5);
-				stack.damage(i, user, p -> p.sendToolBreakStatus(hand));
+				interaction.apply(stack, user.world, new MagicUser(user), entity.getBlockPos(), hand);
 				return true;
 			}
 		}

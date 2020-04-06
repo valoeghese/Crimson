@@ -2,7 +2,7 @@ package modfest.teamgreen.world.crimson;
 
 import com.google.common.collect.ImmutableList;
 
-import modfest.teamgreen.content.block.ModBlocks;
+import modfest.teamgreen.content.block.CrimsonBlocks;
 import net.minecraft.world.gen.decorator.LeaveVineTreeDecorator;
 import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -18,8 +18,8 @@ public class CrimsonBiomeFeatures {
 	public static final ConfiguredFeature<BranchedTreeFeatureConfig, ?> CRIMSON_TREE_FEATURE = Feature.ACACIA_TREE.configure(
 			new BranchedTreeFeatureConfig.Builder(
 					new SimpleBlockStateProvider(
-							ModBlocks.CRIMSON_LOG.get().getDefaultState()),
-					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LEAVES.get().getDefaultState()),
+							CrimsonBlocks.CRIMSON_LOG.get().getDefaultState()),
+					new SimpleBlockStateProvider(CrimsonBlocks.CRIMSON_LEAVES.get().getDefaultState()),
 					new AcaciaFoliagePlacer(2, 0))
 			.baseHeight(6)
 			.heightRandA(2)
@@ -30,8 +30,8 @@ public class CrimsonBiomeFeatures {
 
 	public static final ConfiguredFeature<BranchedTreeFeatureConfig, ?> CRIMSON_LARGE_TREE_FEATURE = Feature.NORMAL_TREE.configure(
 			new BranchedTreeFeatureConfig.Builder(
-					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LOG.get().getDefaultState()),
-					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LEAVES.get().getDefaultState()),
+					new SimpleBlockStateProvider(CrimsonBlocks.CRIMSON_LOG.get().getDefaultState()),
+					new SimpleBlockStateProvider(CrimsonBlocks.CRIMSON_LEAVES.get().getDefaultState()),
 					new BlobFoliagePlacer(1, 0))
 			.baseHeight(14)
 			.heightRandA(4)
@@ -42,8 +42,8 @@ public class CrimsonBiomeFeatures {
 
 	public static final ConfiguredFeature<BranchedTreeFeatureConfig, ?> CRIMSON_VINE_TREE_FEATURE = Feature.NORMAL_TREE.configure(
 			new BranchedTreeFeatureConfig.Builder(
-					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LOG.get().getDefaultState()),
-					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LEAVES.get().getDefaultState()),
+					new SimpleBlockStateProvider(CrimsonBlocks.CRIMSON_LOG.get().getDefaultState()),
+					new SimpleBlockStateProvider(CrimsonBlocks.CRIMSON_LEAVES.get().getDefaultState()),
 					new BlobFoliagePlacer(3, 1))
 			.baseHeight(4)
 			.heightRandA(3)
@@ -54,21 +54,21 @@ public class CrimsonBiomeFeatures {
 
 	public static final ConfiguredFeature<TreeFeatureConfig, ?> CRIMSON_BUSH_FEATURE = Feature.JUNGLE_GROUND_BUSH.configure(
 			new TreeFeatureConfig.Builder(
-					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LOG.get().getDefaultState()),
-					new SimpleBlockStateProvider(ModBlocks.CRIMSON_LEAVES.get().getDefaultState())
+					new SimpleBlockStateProvider(CrimsonBlocks.CRIMSON_LOG.get().getDefaultState()),
+					new SimpleBlockStateProvider(CrimsonBlocks.CRIMSON_LEAVES.get().getDefaultState())
 					)
 			.build());
 
 	public static final ConfiguredFeature<RandomPatchFeatureConfig, ?> CRIMSON_THORN_FEATURE = Feature.RANDOM_PATCH.configure(
 			new RandomPatchFeatureConfig.Builder(
-					new SimpleBlockStateProvider(ModBlocks.CRIMSON_THORN.get().getDefaultState()),
+					new SimpleBlockStateProvider(CrimsonBlocks.CRIMSON_THORN.get().getDefaultState()),
 					new SimpleBlockPlacer())
 			.tries(16)
 			.build());
 
 	public static final ConfiguredFeature<RandomPatchFeatureConfig, ?> CRIMSON_TENDRILS_FEATURE = Feature.RANDOM_PATCH.configure(
 			new RandomPatchFeatureConfig.Builder(
-					new SimpleBlockStateProvider(ModBlocks.CRIMSON_TENDRILS.get().getDefaultState()),
+					new SimpleBlockStateProvider(CrimsonBlocks.CRIMSON_TENDRILS.get().getDefaultState()),
 					new SimpleBlockPlacer())
 			.tries(16)
 			.build());

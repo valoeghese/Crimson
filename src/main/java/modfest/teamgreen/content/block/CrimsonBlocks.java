@@ -17,7 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public enum ModBlocks {
+public enum CrimsonBlocks {
 	LAZULITE_ORE("lazulite_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.IRON_ORE).breakByTool(FabricToolTags.PICKAXES, 2), new OreProperties().experience(2, 5)),
 	REALGAR_ORE("realgar_ore", ModOreBlock::new, FabricBlockSettings.copy(Blocks.COAL_ORE).breakByTool(FabricToolTags.PICKAXES, 1), new OreProperties().experience(1, 3)),
 	BORNITE("bornite", ModOreBlock::new, FabricBlockSettings.copy(Blocks.COAL_ORE).breakByTool(FabricToolTags.PICKAXES, 0), new OreProperties().experience(1, 2)),
@@ -30,21 +30,21 @@ public enum ModBlocks {
 	CRIMSON_THORN("crimson_thorn", CrimsonThornBlock::new, FabricBlockSettings.copy(Blocks.FERN)),
 	CRIMSON_TENDRILS("crimson_tendrils", CrimsonTendrilsBlock::new, FabricBlockSettings.copy(Blocks.FERN));
 
-	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings) {
+	private CrimsonBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings) {
 		this(id, constructor, settings, new Item.Settings().group(CrimsonInit.GROUP));
 	}
 
-	private <T extends Object> ModBlocks(String id, BiFunction<Block.Settings, T, Block> constructor, FabricBlockSettings settings, T moddedBlockProperties) {
+	private <T extends Object> CrimsonBlocks(String id, BiFunction<Block.Settings, T, Block> constructor, FabricBlockSettings settings, T moddedBlockProperties) {
 		this(id, constructor, settings, moddedBlockProperties, new Item.Settings().group(CrimsonInit.GROUP));
 	}
 
-	private ModBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings, Item.Settings itemSettings) {
+	private CrimsonBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings, Item.Settings itemSettings) {
 		Identifier identifier = CrimsonInit.from(id);
 		this.block = Registry.register(Registry.BLOCK, identifier, constructor.apply(settings.build()));
 		this.item = Registry.register(Registry.ITEM, identifier, new BlockItem(this.block, itemSettings));
 	}
 
-	private <T extends Object> ModBlocks(String id, BiFunction<Block.Settings, T, Block> constructor, FabricBlockSettings settings, T moddedBlockProperties, Item.Settings itemSettings) {
+	private <T extends Object> CrimsonBlocks(String id, BiFunction<Block.Settings, T, Block> constructor, FabricBlockSettings settings, T moddedBlockProperties, Item.Settings itemSettings) {
 		Identifier identifier = CrimsonInit.from(id);
 		this.block = Registry.register(Registry.BLOCK, identifier, constructor.apply(settings.build(), moddedBlockProperties));
 		this.item = Registry.register(Registry.ITEM, identifier, new BlockItem(this.block, itemSettings));
@@ -61,7 +61,7 @@ public enum ModBlocks {
 		return this.item;
 	}
 
-	public static ModBlocks ensureInit() {
+	public static CrimsonBlocks ensureInit() {
 		return null;
 	}
 }

@@ -8,6 +8,8 @@ import javax.annotation.Nullable;
 import modfest.teamgreen.magic.attribute.Attribute;
 import modfest.teamgreen.magic.attribute.ModifyingAttribute;
 import modfest.teamgreen.magic.language.Language;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
@@ -67,8 +69,9 @@ public class MagicInteraction {
 		return this.magicName;
 	}
 
-	public int apply(IWorld world, MagicUser user, @Nullable BlockPos pos) {
+	public void apply(ItemStack stack, IWorld world, MagicUser user, @Nullable BlockPos pos, @Nullable Hand hand) {
 		int currentValue = -1; // -1 represents not started
+		boolean damage = user.type() == MagicUser.Type.PLAYER;
 
 		for (ConfiguredAttribute attribute : this.components) {
 			if (currentValue == -1) {
@@ -76,9 +79,12 @@ public class MagicInteraction {
 			} else {
 				currentValue = attribute.process(world, currentValue, user, pos);
 			}
-		}
 
-		return currentValue;
+			if (damage) {
+				int i = (int) Math.max(1, currentValue / 2.5);
+				stack.damage(i, user.player(), p -> p.sendToolBreakStatus(hand));
+			}
+		}
 	}
 
 	public int[] serialise() {
