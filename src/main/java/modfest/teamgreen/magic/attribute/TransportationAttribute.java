@@ -91,17 +91,17 @@ public class TransportationAttribute extends Attribute {
 		if (user.type() == MagicUser.Type.PLAYER) {
 			world.getChunk(pos).getBlockState(pos);
 			pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos);
-			user.player().setPos(pos.getX(), pos.getY() + 0.5, pos.getZ());
+			user.player().setPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
 		} else {
 			PlayerEntity pe = world.getClosestPlayer(user.blockPos().getX(), user.blockPos().getZ(), 2.0 * strength);
 			world.getChunk(pos);
 			pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos);
-			pe.setPos(pos.getX(), pos.getY() + 0.5, pos.getZ());
+			pe.setPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
 		}
 	}
 
 	private static int telePower(BlockPos original, BlockPos result) {
-		return (int) (15.0 * (double) original.getSquaredDistance(result) / 1048576.0);
+		return (int) (15.0 * (double) original.getSquaredDistance(result) / 5000.0);
 	}
 
 	private static final Morpheme MORPHEME = new Morpheme("asaro", "asai", "esei", false);

@@ -11,6 +11,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import modfest.teamgreen.magic.MagicUser;
 import modfest.teamgreen.magic.language.Morpheme;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -95,12 +96,9 @@ public abstract class Attribute implements ModifyingAttribute {
 		return pos;
 	}
 
-	protected static void spawnParticle(IWorld world, ParticleEffect type, int count, double spread, BlockPos pos, double vx, double vy, double vz) {
-		for (int i = 0; i < count; ++i) {
-			double px = pos.getX() + RAND.nextDouble() * spread * 2 - spread;
-			double py = pos.getY() + RAND.nextDouble() * spread * 2 - spread;
-			double pz = pos.getZ() + RAND.nextDouble() * spread * 2 - spread;
-			world.addParticle(type, px, py, pz, vx, vy, vz);
+	protected static void spawnParticles(IWorld world, ParticleEffect type, int count, BlockPos pos, double dx, double dy, double dz, double speed) {
+		if (world instanceof ServerWorld) {
+			((ServerWorld) world).spawnParticles(type, pos.getX(), pos.getY() + 0.5, pos.getZ(), count, dx, dy, dz, speed);
 		}
 	}
 

@@ -108,7 +108,7 @@ public class CrimsonConfig {
 				.addDataEntry("crimsonNoisePeriod", "80.0")
 				.addDataEntry("crimsonFadeRadius", "50.0"));
 		templateBuilder.addDataEntry("magicDeviceMaxSections", "4");
-		templateBuilder.addDataEntry("magicDeviceDurability", "60");
+		templateBuilder.addDataEntry("magicDeviceDurability", "45");
 		return templateBuilder.build();
 	}
 

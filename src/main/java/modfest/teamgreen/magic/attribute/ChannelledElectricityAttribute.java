@@ -36,7 +36,7 @@ public class ChannelledElectricityAttribute extends Attribute {
 			return 15;
 		} else {
 			// still able to provide some magical power since channelled
-			spawnParticle(world, ParticleTypes.SMOKE, 3, 0.5, pos, 0.0, 0.2, 0.0);
+			spawnParticles(world, ParticleTypes.SMOKE, 15, pos, 0.0, 0.1, 0.0, 0.02);
 			return 3;
 		}
 	}
@@ -67,7 +67,7 @@ public class ChannelledElectricityAttribute extends Attribute {
 					summonLightning(world, pos1, true);
 				}
 			} else {
-				spawnParticle(world, ParticleTypes.SMOKE, 3, 0.5, pos, 0.0, 0.2, 0.0);
+				spawnParticles(world, ParticleTypes.SMOKE, 15, pos, 0.0, 0.1, 0.0, 0.02);
 			}
 
 			// channelled electricity type : more efficient. always only subtract 1, provide 3 min

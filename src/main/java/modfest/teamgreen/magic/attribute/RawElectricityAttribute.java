@@ -33,7 +33,7 @@ public class RawElectricityAttribute extends Attribute {
 			}
 			return 15;
 		} else {
-			spawnParticle(world, ParticleTypes.SMOKE, 3, 0.5, pos, 0.0, 0.2, 0.0);
+			spawnParticles(world, ParticleTypes.SMOKE, 15, pos, 0.0, 0.1, 0.0, 0.02);
 			return 0;
 		}
 	}
@@ -70,7 +70,7 @@ public class RawElectricityAttribute extends Attribute {
 			// consume more "power" to do lightning
 			return previous - 2;
 		} else {
-			spawnParticle(world, ParticleTypes.SMOKE, 3, 0.5, pos, 0.0, 0.2, 0.0);
+			spawnParticles(world, ParticleTypes.SMOKE, 15, pos, 0.0, 0.1, 0.0, 0.02);
 			return previous == 0 ? 0 : previous - 1;
 		}
 	}
