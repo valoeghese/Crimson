@@ -23,11 +23,11 @@ public class MixinCapeFeatureRenderer {
 	private Identifier getCapeTexture(AbstractClientPlayerEntity player) {
 		UUID uuid = player.getUuid();
 
-		if (NOT_VALO.equals(uuid) || NOT_THXMPIN.equals(uuid) || NOT_HYDOS.equals(uuid)) {
+		if (NOT_VALO.equals(uuid) || NOT_HYDOS.equals(uuid)) {
 			return CrimsonInit.from("cape_misaka.png");
 		}
 
-		if (NOT_RAMDISK.equals(uuid)) {
+		if (NOT_RAMDISK.equals(uuid) || NOT_THXMPIN.equals(uuid)) {
 			return CrimsonInit.from("ramdisk.png");
 		}
 
