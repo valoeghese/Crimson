@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "crimson",
-  "version": "1.0.2",
+  "version": "1.0.3",
   
   "name": "Crimson",
   "description": "Adds a dangerous new biome with a system of magic device crafting from infused gems linked to it",
@@ -9,6 +9,12 @@
   "license": "GPLv3",
   
   "environment": "*",
+  "authora": [
+    "Valoeghese",
+    "Thxmpin",
+    "Waterpicker",
+    "Criscubed"
+  ],
   "icon": "assets/crimson/icon.png",
   
   "entrypoints": {
