@@ -72,7 +72,9 @@ public class MixinItemStack implements MagicDeviceItemstack {
 
 	@Inject(method = "copy", at = @At("RETURN"))
 	private void copy(CallbackInfoReturnable<ItemStack> cir) {
-		ItemStack result = cir.getReturnValue();
-		result.setTag(this.tag);
+		if (this.item instanceof MagicDeviceItem) {
+			ItemStack result = cir.getReturnValue();
+			result.setTag(this.tag);
+		}
 	}
 }
