@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import modfest.teamgreen.world.BiomeFog;
-import modfest.teamgreen.world.ModWorld;
+import modfest.teamgreen.world.CrimsonWorld;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -37,10 +37,10 @@ public class MixinOverworldDimension {
 
 			BlockPos.Mutable pos = new BlockPos.Mutable();
 
-			for (int sampleX = x - ModWorld.FOG_BLEND_RADIUS; sampleX <= x + ModWorld.FOG_BLEND_RADIUS; ++sampleX) {
+			for (int sampleX = x - 8; sampleX <= x + 8; ++sampleX) {
 				pos.setX(sampleX);
 
-				for (int sampleZ = z - ModWorld.FOG_BLEND_RADIUS; sampleZ <= z + ModWorld.FOG_BLEND_RADIUS; ++sampleZ) {
+				for (int sampleZ = z - 8; sampleZ <= z + 8; ++sampleZ) {
 					pos.setZ(sampleZ);
 
 					Biome biome = world.getBiome(pos); // get biome
@@ -68,7 +68,7 @@ public class MixinOverworldDimension {
 			}
 
 			if (modified) { // set return value if modified
-				final double divisor = ModWorld.FOG_BLEND_DIVISOR;
+				final double divisor = 17 * 17;
 				cir.setReturnValue(new Vec3d(Math.sqrt(accumulatedR / divisor), Math.sqrt(accumulatedG / divisor), Math.sqrt(accumulatedB / divisor)));
 			}
 		}

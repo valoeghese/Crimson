@@ -104,8 +104,8 @@ public class CrimsonConfig {
 		});
 		templateBuilder.addContainer("worldGen", c -> c
 				.addDataEntry("tendrilsGenCount", "1")
-				.addDataEntry("crimsonNoiseCutoff", "0.19")
-				.addDataEntry("crimsonNoisePeriod", "80.0")
+				.addDataEntry("crimsonNoiseCutoff", "0.2")
+				.addDataEntry("crimsonNoisePeriod", "84.0")
 				.addDataEntry("crimsonFadeRadius", "50.0"));
 		templateBuilder.addDataEntry("magicDeviceMaxSections", "4");
 		templateBuilder.addDataEntry("magicDeviceDurability", "45");

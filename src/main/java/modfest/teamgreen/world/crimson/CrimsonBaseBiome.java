@@ -4,7 +4,7 @@ import modfest.teamgreen.CrimsonConfig.BiomeGen;
 import modfest.teamgreen.CrimsonInit;
 import modfest.teamgreen.world.BiomeFog;
 import modfest.teamgreen.world.DefaultedBiome;
-import modfest.teamgreen.world.ModWorld;
+import modfest.teamgreen.world.CrimsonWorld;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.Vec3d;
@@ -23,7 +23,7 @@ public abstract class CrimsonBaseBiome extends DefaultedBiome implements BiomeFo
 	public CrimsonBaseBiome(BiomeGen biomeGen, Properties properties) {
 		super(properties, new SettingDefaults()
 				.precipitation(Biome.Precipitation.NONE)
-				.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, ModWorld.CRIMSON_SURFACE_CONFIG)
+				.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, CrimsonWorld.CRIMSON_SURFACE_CONFIG)
 				.depth(biomeGen.depth)
 				.scale(biomeGen.scale)
 				.temperature(0.8f)

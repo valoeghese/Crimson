@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.function.Consumer;
 
 import modfest.teamgreen.CrimsonInit;
-import modfest.teamgreen.world.ModWorld;
+import modfest.teamgreen.world.CrimsonWorld;
 import modfest.teamgreen.world.noise.OctaveOpenSimplexNoise;
 import modfest.teamgreen.world.util.Int2ToDoubleCache;
 import net.minecraft.world.biome.Biome;
@@ -46,19 +46,19 @@ public class CrimsonBiomeLogic {
 			case OCEAN:
 				break;
 			case RIVER:
-				setReturnValue.accept(ModWorld.CRIMSON_RIVER);
+				setReturnValue.accept(CrimsonWorld.CRIMSON_RIVER);
 				break;
 			case TAIGA:
 			case JUNGLE:
 			case FOREST:
-				setReturnValue.accept(ModWorld.CRIMSON_FOREST);
+				setReturnValue.accept(CrimsonWorld.CRIMSON_FOREST);
 				break;
 			case EXTREME_HILLS:
 			case SWAMP:
-				setReturnValue.accept(ModWorld.CRIMSON_MARSHLAND);
+				setReturnValue.accept(CrimsonWorld.CRIMSON_MARSHLAND);
 				break;
 			default:
-				setReturnValue.accept(ModWorld.CRIMSON_BRUSHLAND);
+				setReturnValue.accept(CrimsonWorld.CRIMSON_BRUSHLAND);
 				break;
 			}
 		}

@@ -11,8 +11,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class ModOreBlock extends Block {
-	public ModOreBlock(Settings settings, OreProperties properties) {
+public class CrimsonOreBlock extends Block {
+	public CrimsonOreBlock(Settings settings, OreProperties properties) {
 		super(settings);
 
 		this.minExp = properties.minExperienceWhenMined;

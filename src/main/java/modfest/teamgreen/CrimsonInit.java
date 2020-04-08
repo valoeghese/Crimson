@@ -5,7 +5,7 @@ import modfest.teamgreen.content.item.CrimsonItems;
 import modfest.teamgreen.crafting.gui.MagicDeviceCraftingController;
 import modfest.teamgreen.magic.AttributeDefinitions;
 import modfest.teamgreen.mixin.AccessorBrewingRecipeRegistry;
-import modfest.teamgreen.world.ModWorld;
+import modfest.teamgreen.world.CrimsonWorld;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
@@ -31,7 +31,7 @@ public class CrimsonInit implements ModInitializer {
 	private void registerAll() {
 		CrimsonItems.ensureInit();
 		CrimsonBlocks.ensureInit();
-		ModWorld.registerAll();
+		CrimsonWorld.registerAll();
 		ContainerProviderRegistry.INSTANCE.registerFactory(MagicDeviceCraftingController.ID, (syncId, id, player, buf) -> new MagicDeviceCraftingController(syncId, player.inventory));
 		AttributeDefinitions.ensureInit();
 	}
