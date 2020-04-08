@@ -1,0 +1,16 @@
+{
+	"variants": {
+		"axis=y": {
+			"model": "crimson:block/stripped_crimson_wood"
+		},
+		"axis=z": {
+			"model": "crimson:block/stripped_crimson_wood",
+			"x": 90
+		},
+		"axis=x": {
+			"model": "crimson:block/stripped_crimson_wood",
+			"x": 90,
+			"y": 90
+		}
+	}
+}

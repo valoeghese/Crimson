@@ -30,6 +30,7 @@ public enum CrimsonBlocks {
 	CRIMSON_LOG("crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.ACACIA_LOG)),
 	CRIMSON_WOOD("crimson_wood", PillarBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_WOOD)),
 	STRIPPED_CRIMSON_LOG("stripped_crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.STRIPPED_ACACIA_LOG).materialColor(MaterialColor.RED)),
+	STRIPPED_CRIMSON_WOOD("stripped_crimson_wood", PillarBlock::new, FabricBlockSettings.copy(Blocks.STRIPPED_ACACIA_WOOD).materialColor(MaterialColor.RED)),
 	CRIMSON_THORN("crimson_thorn", CrimsonThornBlock::new, FabricBlockSettings.copy(Blocks.FERN)),
 	CRIMSON_TENDRILS("crimson_tendrils", CrimsonTendrilsBlock::new, FabricBlockSettings.copy(Blocks.FERN));
 
