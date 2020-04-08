@@ -3,6 +3,7 @@
   "package": "modfest.teamgreen.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+		"AccessorAxeItem",
     "MixinItemStack",
     "MixinVanillaLayeredBiomeSource",
     "AccessorBrewingRecipeRegistry"

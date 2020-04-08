@@ -1,6 +1,7 @@
 package modfest.teamgreen;
 
 import modfest.teamgreen.content.block.CrimsonBlocks;
+import modfest.teamgreen.content.block.CrimsonStrippedBlocks;
 import modfest.teamgreen.content.item.CrimsonItems;
 import modfest.teamgreen.crafting.gui.MagicDeviceCraftingController;
 import modfest.teamgreen.magic.AttributeDefinitions;
@@ -31,6 +32,7 @@ public class CrimsonInit implements ModInitializer {
 	private void registerAll() {
 		CrimsonItems.ensureInit();
 		CrimsonBlocks.ensureInit();
+		CrimsonStrippedBlocks.init();
 		CrimsonWorld.registerAll();
 		ContainerProviderRegistry.INSTANCE.registerFactory(MagicDeviceCraftingController.ID, (syncId, id, player, buf) -> new MagicDeviceCraftingController(syncId, player.inventory));
 		AttributeDefinitions.ensureInit();
