@@ -6,7 +6,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import modfest.teamgreen.world.BiomeFog;
-import modfest.teamgreen.world.CrimsonWorld;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -17,11 +16,19 @@ import net.minecraft.world.dimension.OverworldDimension;
 
 @Mixin(OverworldDimension.class)
 public class MixinOverworldDimension {
-	@Inject(at = @At("HEAD"), method = "getFogColor", cancellable = true)
+	@Inject(at = @At("RETURN"), method = "getFogColor", cancellable = true)
 	private void modifyFogColour(float skyAngle, float tickDelta, CallbackInfoReturnable<Vec3d> cir) {
 		final MinecraftClient client = MinecraftClient.getInstance();
 		final World world = client.world;
 		final DimensionType dimType = world.getDimension().getType();
+
+		Vec3d original = cir.getReturnValue();
+		double defaultR = original.getX();
+		defaultR *= defaultR;
+		double defaultG = original.getY();
+		defaultG *= defaultG;
+		double defaultB = original.getZ();
+		defaultB *= defaultB;
 
 		if (dimType == DimensionType.OVERWORLD) { // add dimension type checks here for fog colour there
 			final BlockPos playerPos = client.player.getBlockPos();
@@ -60,9 +67,9 @@ public class MixinOverworldDimension {
 						accumulatedG += g * g;
 						accumulatedB += b * b;
 					} else {
-						accumulatedR += 0.25f; // 0.5 * 0.5
-						accumulatedG += 0.25f; // 0.5 * 0.5
-						accumulatedB += 0.25f; // 0.5 * 0.5
+						accumulatedR += defaultR;
+						accumulatedG += defaultG;
+						accumulatedB += defaultB;
 					}
 				}
 			}

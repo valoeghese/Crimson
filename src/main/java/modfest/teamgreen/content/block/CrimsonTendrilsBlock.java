@@ -6,7 +6,6 @@ import net.minecraft.block.FlowerBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.math.BlockPos;
@@ -19,14 +18,12 @@ public final class CrimsonTendrilsBlock extends FlowerBlock {
 
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		if (entity instanceof LivingEntity && entity.getType() != EntityType.SPIDER) {
+		if (entity instanceof LivingEntity && entity.getType() != EntityType.SPIDER && !world.isClient()) {
 			LivingEntity livingEntity = (LivingEntity) entity;
-			if (!livingEntity.isInvulnerableTo(DamageSource.WITHER)) {
-				livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 80));
-				livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 60));
-				livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 25));
-				world.breakBlock(pos, false);
-			}
+			livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 80));
+			livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 60));
+			livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 25));
+			world.breakBlock(pos, false);
 		}
 	}
 }
