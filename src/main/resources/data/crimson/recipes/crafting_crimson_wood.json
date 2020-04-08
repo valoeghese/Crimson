@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "bark",
+	"pattern": [
+		"cc",
+		"cc"
+	],
+	"key": {
+		"c": {
+			"item": "crimson:crimson_log"
+		}
+	},
+	"result": {
+		"item": "crimson:crimson_wood",
+		"count": 3
+	}
+}
