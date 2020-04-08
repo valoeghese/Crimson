@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tools.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.LogBlock;
 import net.minecraft.block.MaterialColor;
@@ -26,6 +27,7 @@ public enum CrimsonBlocks {
 	MAGIC_DEVICE_CRAFTER("magic_device_crafter", MagicDeviceCraftingBlock::new, FabricBlockSettings.copy(Blocks.COBBLESTONE)),
 	CRIMSON_LEAVES("crimson_leaves", LeavesBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_LEAVES)),
 	CRIMSON_SAPLING("crimson_sapling", CrimsonSaplingBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_SAPLING)),
+	POTTED_CRIMSON_SAPLING("potted_crimson_sapling", a -> new FlowerPotBlock(CRIMSON_SAPLING.get(), a), FabricBlockSettings.copy(Blocks.POTTED_ACACIA_SAPLING), null),
 	CRIMSON_LOG("crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.ACACIA_LOG)),
 	CRIMSON_THORN("crimson_thorn", CrimsonThornBlock::new, FabricBlockSettings.copy(Blocks.FERN)),
 	CRIMSON_TENDRILS("crimson_tendrils", CrimsonTendrilsBlock::new, FabricBlockSettings.copy(Blocks.FERN));
@@ -41,7 +43,11 @@ public enum CrimsonBlocks {
 	private CrimsonBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings, Item.Settings itemSettings) {
 		Identifier identifier = CrimsonInit.from(id);
 		this.block = Registry.register(Registry.BLOCK, identifier, constructor.apply(settings.build()));
-		this.item = Registry.register(Registry.ITEM, identifier, new BlockItem(this.block, itemSettings));
+		if (itemSettings == null) {
+			this.item = null;
+		} else {
+			this.item = Registry.register(Registry.ITEM, identifier, new BlockItem(this.block, itemSettings));
+		}
 	}
 
 	private <T extends Object> CrimsonBlocks(String id, BiFunction<Block.Settings, T, Block> constructor, FabricBlockSettings settings, T moddedBlockProperties, Item.Settings itemSettings) {
