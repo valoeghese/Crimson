@@ -31,5 +31,18 @@
   "biome.crimson.crimson_marshland": "Crimson Marshland",
   "biome.crimson.crimson_river": "Crimson River",
   
-  "itemGroup.crimson.group": "Crimson"
+  "itemGroup.crimson.group": "Crimson",
+  
+  "advancements.crimson.root.title": "Crimson",
+  "advancements.crimson.root.description": "The Crimson",
+  "advancements.crimson.discover_crimson.title": "Enter the Crimson",
+  "advancements.crimson.discover_crimson.description": "Enter a crimson-tainted section of the world",
+  "advancements.crimson.crimson_essence.title": "Essence of the Crimson",
+  "advancements.crimson.crimson_essence.description": "Craft crimson essence",
+  "advancements.crimson.crimson_table.title": "Magician: Apprentice",
+  "advancements.crimson.crimson_table.description": "Craft a Magic Device Crafter",
+  "advancements.crimson.imbue_gemstone.title": "True Power",
+  "advancements.crimson.imbue_gemstone.description": "Imbue a gemstone with the essence of the crimson, unlocking its magic potential",
+  "advancements.crimson.crimson_device.title": "Magician: Master",
+  "advancements.crimson.crimson_device.description": "Craft a Magic Device"
 }

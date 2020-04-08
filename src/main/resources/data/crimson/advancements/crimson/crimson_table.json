@@ -1,0 +1,35 @@
+{
+  "parent": "crimson:crimson/crimson_essence",
+  "display": {
+    "icon": {
+      "item": "crimson:magic_device_crafter"
+    },
+    "title": {
+      "translate": "advancements.crimson.crimson_table.title"
+    },
+    "description": {
+      "translate": "advancements.crimson.crimson_table.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "magic_device_crafter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crimson:magic_device_crafter"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "magic_device_crafter"
+    ]
+  ]
+}

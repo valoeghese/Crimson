@@ -1,0 +1,51 @@
+{
+  "display": {
+    "icon": {
+      "item": "crimson:crimson_sapling"
+    },
+    "title": {
+      "translate": "advancements.crimson.discover_crimson.title"
+    },
+    "description": {
+      "translate": "advancements.crimson.discover_crimson.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "crimson:crimson_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "crimson:crimson_forest"
+      }
+    },
+    "crimson:crimson_marshland": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "crimson:crimson_marshland"
+      }
+    },
+    "crimson:crimson_brushland": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "crimson:crimson_brushland"
+      }
+    },
+    "crimson:crimson_river": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "crimson:crimson_river"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "crimson:crimson_forest",
+      "crimson:crimson_marshland",
+      "crimson:crimson_brushland",
+      "crimson:crimson_river"
+    ]
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": {
+      "item": "crimson:crimson_leaves"
+    },
+    "title": {
+      "translate": "advancements.crimson.root.title"
+    },
+    "description": {
+      "translate": "advancements.crimson.root.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "crimson:textures/block/crimson_log_side.png"
+  }
+}

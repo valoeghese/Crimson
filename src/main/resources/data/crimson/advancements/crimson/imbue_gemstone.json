@@ -1,0 +1,90 @@
+{
+  "parent": "crimson:crimson/crimson_table",
+  "display": {
+    "icon": {
+      "item": "crimson:imbued_diamond"
+    },
+    "title": {
+      "translate": "advancements.crimson.imbue_gemstone.title"
+    },
+    "description": {
+      "translate": "advancements.crimson.imbue_gemstone.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "imbued_diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crimson:imbued_diamond"
+          }
+        ]
+      }
+    },
+    "imbued_lazulite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crimson:imbued_lazulite"
+          }
+        ]
+      }
+    },
+    "imbued_cut_lazulite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crimson:imbued_cut_lazulite"
+          }
+        ]
+      }
+    },
+    "imbued_realgar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crimson:imbued_realgar"
+          }
+        ]
+      }
+    },
+    "imbued_vanadinite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crimson:imbued_vanadinite"
+          }
+        ]
+      }
+    },
+    "imbued_celestine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crimson:imbued_celestine"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "imbued_diamond",
+      "imbued_lazulite",
+      "imbued_cut_lazulite",
+      "imbued_realgar",
+      "imbued_vanadinite",
+      "imbued_celestine"
+    ]
+  ]
+}

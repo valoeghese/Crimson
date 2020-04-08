@@ -1,0 +1,35 @@
+{
+  "parent": "crimson:crimson/discover_crimson",
+  "display": {
+    "icon": {
+      "item": "crimson:crimson_essence"
+    },
+    "title": {
+      "translate": "advancements.crimson.crimson_essence.title"
+    },
+    "description": {
+      "translate": "advancements.crimson.crimson_essence.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "crimson_essence": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crimson:crimson_essence"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "crimson_essence"
+    ]
+  ]
+}
