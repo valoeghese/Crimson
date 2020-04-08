@@ -30,7 +30,8 @@ public enum CrimsonBlocks {
 	POTTED_CRIMSON_SAPLING("potted_crimson_sapling", a -> new FlowerPotBlock(CRIMSON_SAPLING.get(), a), FabricBlockSettings.copy(Blocks.POTTED_ACACIA_SAPLING), null),
 	CRIMSON_LOG("crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.ACACIA_LOG)),
 	CRIMSON_THORN("crimson_thorn", CrimsonThornBlock::new, FabricBlockSettings.copy(Blocks.FERN)),
-	CRIMSON_TENDRILS("crimson_tendrils", CrimsonTendrilsBlock::new, FabricBlockSettings.copy(Blocks.FERN));
+	CRIMSON_TENDRILS("crimson_tendrils", CrimsonTendrilsBlock::new, FabricBlockSettings.copy(Blocks.FERN)),
+	POTTED_CRIMSON_TENDRILS("potted_crimson_tendrils", a -> new FlowerPotBlock(CRIMSON_TENDRILS.get(), a), FabricBlockSettings.copy(Blocks.POTTED_FERN), null);
 
 	private CrimsonBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings) {
 		this(id, constructor, settings, new Item.Settings().group(CrimsonInit.GROUP));
