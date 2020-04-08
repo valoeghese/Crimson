@@ -1,4 +1,5 @@
 {
+  "parent": "crimson:crimson/root",
   "display": {
     "icon": {
       "item": "crimson:crimson_sapling"

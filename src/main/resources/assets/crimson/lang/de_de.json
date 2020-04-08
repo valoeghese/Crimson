@@ -21,7 +21,7 @@
   "block.crimson.realgar_ore": "Realgarerz",
   "block.crimson.vanadinite_ore": "Vanadiniteerz",
   "block.crimson.crimson_thorn": "Crimsondorn",
-  "block.crimson.crimson_log": "Crimson Log",
+  "block.crimson.crimson_log": "Crimsonstamm",
   "block.crimson.crimson_leaves": "Crimsonblätter",
   "block.crimson.crimson_sapling": "Crimsonsetzling",
   "block.crimson.crimson_tendrils": "Crimsonranken",
@@ -33,7 +33,7 @@
   
   "itemGroup.crimson.group": "Crimson",
   
-  "advancements.crimson.root.description": "Der Crimson",
+  "advancements.crimson.root.description": "Die Crimsonmod",
   "advancements.crimson.discover_crimson.title": "Der Crimson betreten",
   "advancements.crimson.discover_crimson.description": "Eine crimsonverdorben Sektion der Welt betreten",
   "advancements.crimson.crimson_essence.title": "Essenz des Crimsons",
