@@ -6,6 +6,8 @@ import io.github.cottonmc.cotton.gui.widget.WGridPanel;
 import io.github.cottonmc.cotton.gui.widget.WItemSlot;
 import modfest.teamgreen.CrimsonInit;
 import modfest.teamgreen.crafting.MagicDeviceCrafting;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.container.ArrayPropertyDelegate;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -26,14 +28,19 @@ public class MagicDeviceCraftingController extends CottonCraftingController {
 		int sections = CrimsonInit.CONFIG.magicDeviceMaxSections;
 		this.size = 3 * sections;
 
+		boolean client = FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT;
+
 		// input slots
 		for (int x = 0; x < sections; ++x) {
 			for (int y = 0; y < 3; ++y) {
 				WItemSlot inputSlot = WItemSlot.of(this.blockInventory, 3 * x + y);
 
-				if (y != 1) {
-					inputSlot.setBackgroundPainter(new ModifierBackgroundPainter(y == 0));
+				if (client) {
+					if (y != 1) {
+						inputSlot.setBackgroundPainter(new ModifierBackgroundPainter(y == 0));
+					}
 				}
+
 				root.add(inputSlot, x, y);
 			}
 		}
