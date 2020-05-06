@@ -45,6 +45,7 @@ public enum CrimsonBlocks {
 	private CrimsonBlocks(String id, Function<Block.Settings, Block> constructor, FabricBlockSettings settings, Item.Settings itemSettings) {
 		Identifier identifier = CrimsonInit.from(id);
 		this.block = Registry.register(Registry.BLOCK, identifier, constructor.apply(settings.build()));
+
 		if (itemSettings == null) {
 			this.item = null;
 		} else {
