@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         {
-            "item": "crimson:crimson_log"
+            "tag": "crimson:crimson_logs"
         }
     ],
     "result": {

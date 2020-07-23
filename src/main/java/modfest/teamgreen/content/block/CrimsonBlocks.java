@@ -13,6 +13,7 @@ import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.LogBlock;
 import net.minecraft.block.MaterialColor;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
@@ -29,6 +30,9 @@ public enum CrimsonBlocks {
 	CRIMSON_SAPLING("crimson_sapling", CrimsonSaplingBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_SAPLING)),
 	POTTED_CRIMSON_SAPLING("potted_crimson_sapling", a -> new FlowerPotBlock(CRIMSON_SAPLING.get(), a), FabricBlockSettings.copy(Blocks.POTTED_ACACIA_SAPLING), null),
 	CRIMSON_LOG("crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.ACACIA_LOG)),
+	CRIMSON_WOOD("crimson_wood", PillarBlock::new, FabricBlockSettings.copy(Blocks.ACACIA_WOOD)),
+	STRIPPED_CRIMSON_LOG("stripped_crimson_log", a -> new LogBlock(MaterialColor.RED, a), FabricBlockSettings.copy(Blocks.STRIPPED_ACACIA_LOG).materialColor(MaterialColor.RED)),
+	STRIPPED_CRIMSON_WOOD("stripped_crimson_wood", PillarBlock::new, FabricBlockSettings.copy(Blocks.STRIPPED_ACACIA_WOOD).materialColor(MaterialColor.RED)),
 	CRIMSON_THORN("crimson_thorn", CrimsonThornBlock::new, FabricBlockSettings.copy(Blocks.FERN)),
 	POTTED_CRIMSON_THORN("potted_crimson_thorn", a -> new FlowerPotBlock(CRIMSON_THORN.get(), a), FabricBlockSettings.copy(Blocks.POTTED_FERN), null),
 	CRIMSON_TENDRILS("crimson_tendrils", CrimsonTendrilsBlock::new, FabricBlockSettings.copy(Blocks.FERN)),
